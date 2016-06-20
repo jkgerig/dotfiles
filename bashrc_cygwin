@@ -27,3 +27,5 @@ bind 'set completion-ignore-case on'
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
+# dircolors (colorize ls output w/solarized dark)
+eval `dircolors ~/.dir_colors`
