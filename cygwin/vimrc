@@ -1,0 +1,14 @@
+" vimrc
+"
+" Use Vim instead of Vi settings
+" This must be first - changes other options 
+set nocompatible
+
+" Make backspace delete over anything
+set backspace=indent,eol,start
+
+" Switch syntax highlighting on
+syntax on
+
+" Enable file type detection and do language-dependent indenting.
+filetype plugin indent on
