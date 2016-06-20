@@ -1,0 +1,29 @@
+# bashrc for cygwin
+# I will probably want to incorporate some aspects of 
+# my linux bashrc into this at some point...
+
+# If not running interactively, don't do anything
+[[ "$-" != *i* ]] && return
+
+# Aliases
+
+# grep colors
+alias grep='grep --color'                     
+alias egrep='egrep --color=auto'             
+alias fgrep='fgrep --color=auto'            
+
+# ls colors, long lists, show `.` files, etc...
+alias ls='ls -hF --color=tty'                 
+alias ll='ls -l --color=tty'                 
+alias la='ls -Al --color=tty'               
+alias l='ls -ACF --color=tty'                          
+
+# TAB-completion settings
+
+# set case-insensitive completion
+bind 'set completion-ignore-case on'
+
+# similar to zsh
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
