@@ -1,0 +1,67 @@
+" _gvimrc for Windows
+
+" first disable Vi compatibilty mode
+set nocompatible
+
+" change leader key
+let mapleader = "," "sets comma as my leader key, instead of \
+
+" color settings
+" Built-in schemes
+    "colorscheme blue       "ugh
+    "colorscheme darkblue   "minor ugh
+    "colorscheme default    "GROSS!
+    "colorscheme delek      "still gross
+    "colorscheme desert     "not TERRIBLE...
+    "colorscheme elflord    "ummm, very purple...
+    "colorscheme evening    "no thanks, too pastel-ey
+    "colorscheme industry   "nope
+    "colorscheme koehler    "nope
+    "colorscheme morning    "nope
+    "colorscheme murphy     "no
+    "colorscheme pablo      "no
+    "colorscheme peachpuff  "actually, not bad, a bit bright
+    "colorscheme ron        "a bit green/future-y, but ok?
+    "colorscheme shine      "AHHH MAKE IT STOP!!!
+    "colorscheme slate      "ok, but highlights are weird
+    "colorscheme torte      "seriously, they already did this one
+    "colorscheme zellner    "eww. yuck.
+
+" Custom/added colorschemes
+    "colorscheme solarized  "a sane colorscheme...thank you Ethan
+    "colorscheme badwolf
+    "colorscheme jellybeans
+    "colorscheme monokai
+    colorscheme PerfectDark
+    
+" font settings
+set guifont=Ubuntu_Mono:h12:cANSI
+
+" general display settings
+set number
+set hlsearch
+set incsearch
+nnoremap <leader><space> :noh<cr>
+set ruler
+"set guioptions-=m "toggle menu bar
+set guioptions-=T "toggle toolbar
+set guioptions-=r "toggle scrollbars
+syntax enable
+
+" editor settings
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set shiftround
+set expandtab
+set backspace=indent,eol,start
+set autoindent
+
+" environment (?) settings
+filetype plugin indent on
+set browsedir=current
+set noswapfile
+set shell=C:\Windows\system32\cmd.exe
+set shellquote=
+set shellxquote=(
+set shellcmdflag=/c
