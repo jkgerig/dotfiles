@@ -65,3 +65,6 @@ set shell=C:\Windows\system32\cmd.exe
 set shellquote=
 set shellxquote=(
 set shellcmdflag=/c
+
+" change working directory to local drive
+cd C:\Users\kgerig
