@@ -14,7 +14,7 @@ alias fgrep='fgrep --color=auto'
 
 # ls colors, long lists, show `.` files, etc...
 alias ls='ls -hF --color=tty'                 
-alias ll='ls -l --color=tty'                 
+alias ll='ls -al --color=tty'                 
 alias la='ls -Al --color=tty'               
 alias l='ls -ACF --color=tty'                          
 
@@ -29,3 +29,27 @@ bind 'TAB:menu-complete'
 
 # dircolors (colorize ls output w/solarized dark)
 eval `dircolors ~/.dir_colors`
+
+# variables for ANSI colors
+cBlack='\e[0;30m'
+cBoldBlack='\e[1;30m'
+cRed='\e[0;31m'
+cBoldRed='\e[1;31m'
+cGreen='\e[0;32m'
+cBoldGreen='\e[1;32m'
+cYellow='\e[0;33m'
+cBoldYellow='\e[1;33m'
+cBlue='\e[0;34m'
+cBoldBlue='\e[1;34m'
+cMagenta='\e[0;35m'
+cBoldMagenta='\e[1;35m'
+cCyan='\e[0;36m'
+cBoldCyan='\e[1;36m'
+cWhite='\e[0;37m'
+cBoldWhite='\e[1;37m'
+cReset='\e[0m'
+
+# custom prompt and color
+PS1_START="$cGreen"
+PS1_MID="$cBlue"
+export PS1="$PS1_START\u $PS1_MID\w $cReset\$ "
