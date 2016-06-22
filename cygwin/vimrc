@@ -4,6 +4,9 @@
 " This must be first - changes other options 
 set nocompatible
 
+" change leader key
+let mapleader = ","
+
 " Make backspace delete over anything
 set backspace=indent,eol,start
 
@@ -17,3 +20,26 @@ filetype plugin indent on
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+
+" tabs
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+
+" general display settings
+set number
+"set relativenumber
+nnoremap <leader><space> :noh<cr>
+set ruler
+set cmdheight=2
+set hlsearch
+set showmode
+set showcmd
+"set cursorline
+set wildmenu
+
+nnoremap j gj
+nnoremap k gk
+

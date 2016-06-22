@@ -1,11 +1,12 @@
-# bashrc for cygwin
-# I will probably want to incorporate some aspects of 
-# my linux bashrc into this at some point...
+#
+# bashrc
+#
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
 # Aliases
+#==========================================================
 
 # grep colors
 alias grep='grep --color'                     
@@ -19,6 +20,7 @@ alias la='ls -Al --color=tty'
 alias l='ls -ACF --color=tty'                          
 
 # TAB-completion settings
+#==========================================================
 
 # set case-insensitive completion
 bind 'set completion-ignore-case on'
@@ -27,8 +29,11 @@ bind 'set completion-ignore-case on'
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
+# Color settings
+#==========================================================
+
 # dircolors (colorize ls output w/solarized dark)
-eval `dircolors ~/.dir_colors`
+eval `dircolors -b ~/.dir_colors`
 
 # variables for ANSI colors
 cBlack='\[\e[0;30m\]'
@@ -49,5 +54,24 @@ cWhite='\[\e[0;37m\]'
 cBoldWhite='\[\e[1;37m\]'
 cReset='\[\e[0m\]'
 
+# colorized man pages
+man() {
+    env \
+    LESS_TERMCAP_mb=$'\e[00;34m' \
+    LESS_TERMCAP_md=$'\e[00;34m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;34m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[00;33m' \
+    man "$@"
+}
+
+# Custom Prompt/Terminal Titles
+#==========================================================
+
 # custom prompt and color
 export PS1="\n${cGreen}\u ${cBlue}\w ${cReset}\$ "
+
+# custom title: user: current directory
+PROMPT_COMMAND='echo -ne "\033]0;${USER}: ${PWD}\007"'
