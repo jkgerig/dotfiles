@@ -12,3 +12,8 @@ syntax on
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
+
+" Set location for swapfiles, undo, and backup
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
