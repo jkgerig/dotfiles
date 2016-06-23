@@ -39,6 +39,7 @@ set showmode
 set showcmd
 "set cursorline
 set wildmenu
+set showtabline=2
 
 nnoremap j gj
 nnoremap k gk
