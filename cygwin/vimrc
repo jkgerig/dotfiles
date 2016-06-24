@@ -1,14 +1,16 @@
+"
 " vimrc
 "
-" Use Vim instead of Vi settings
-" This must be first - changes other options 
-set nocompatible
 
-" change leader key
-let mapleader = ","
+" Use Vim instead of Vi settings
+set nocompatible
 
 " Make backspace delete over anything
 set backspace=indent,eol,start
+
+" I actually prefer the 8-color colorscheme over the 256...
+set background=light
+set t_Co=8
 
 " Switch syntax highlighting on
 syntax on
@@ -18,8 +20,8 @@ filetype plugin indent on
 
 " Set location for swapfiles, undo, and backup
 set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
+set directory=~/.vim/backup//
+set undodir=~/.vim/backup//
 
 " tabs
 set expandtab

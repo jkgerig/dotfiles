@@ -76,11 +76,8 @@ man() {
     man "$@"
 }
 
-# Custom Prompt/Terminal Titles
+# Custom Prompt
 #==========================================================
 
 # custom prompt and color
-export PS1="\n\[${cGreen}\]\u \[${cBlue}\]\w \[${cReset}\]\$ "
-
-# custom title: user: current directory
-PROMPT_COMMAND='echo -ne "\033]0;${USER}: ${PWD}\007"'
+export PS1="\[${cGreen}\]\u \[${cBlue}\]\w \[${cReset}\]\$ "
