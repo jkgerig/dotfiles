@@ -1,6 +1,35 @@
 #
-# .bash-colors
+# bashrc
 #
+
+# If not running interactively, don't do anything
+[[ "$-" != *i* ]] && return
+
+# Aliases
+#==========================================================
+
+# grep colors
+alias grep='grep --color'                     
+alias egrep='egrep --color=auto'             
+alias fgrep='fgrep --color=auto'            
+
+# ls colors, long lists, show `.` files, etc...
+alias ls='ls -hF --color=tty'                 
+alias ll='ls -al --color=tty'                 
+alias l='ls -ACF --color=tty'                          
+
+# TAB-completion settings
+#==========================================================
+
+# set case-insensitive completion
+bind 'set completion-ignore-case on'
+
+# similar to zsh
+#bind 'set show-all-if-ambiguous on' # seems a little too aggressive
+bind 'TAB:menu-complete'
+
+# Color settings
+#==========================================================
 
 # dircolors (colorize ls output w/solarized dark)
 eval `dircolors -b ~/.dir_colors`
@@ -26,7 +55,6 @@ cReset='\e[0m'
 
 # colorized man pages
 export GROFF_NO_SGR=1
-
 # variables below are as follows:
 #   _mb: begin 'blinking'
 #   _md: begin BOLD
@@ -35,7 +63,6 @@ export GROFF_NO_SGR=1
 #   _so: begin 'standout mode'
 #   _ue: end underline mode
 #   _us: begin underline mode
-
 man() {
     env \
     LESS_TERMCAP_mb=$'\e[01;31m' \
