@@ -11,16 +11,11 @@ set backspace=indent,eol,start
 " Switch syntax highlighting on
 syntax on
 
-colorscheme murphy
-set background=dark
+"colorscheme murphy
+"set background=dark
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
-
-" Set location for swapfiles, undo, and backup
-"if !isdirectory("$HOME/.vim/backup")
-"    call mkdir("$HOME/.vim/backup", "p")
-"endif
 
 set backupdir=~/.vim/backup//
 set directory=~/.vim/backup//
