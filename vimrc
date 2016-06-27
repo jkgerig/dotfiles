@@ -8,17 +8,20 @@ set nocompatible
 " Make backspace delete over anything
 set backspace=indent,eol,start
 
-" I actually prefer the 8-color colorscheme over the 256...
-set background=light
-set t_Co=8
-
 " Switch syntax highlighting on
 syntax on
+
+colorscheme murphy
+set background=dark
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
 
 " Set location for swapfiles, undo, and backup
+"if !isdirectory("$HOME/.vim/backup")
+"    call mkdir("$HOME/.vim/backup", "p")
+"endif
+
 set backupdir=~/.vim/backup//
 set directory=~/.vim/backup//
 set undodir=~/.vim/backup//
@@ -32,14 +35,12 @@ set shiftround
 
 " general display settings
 set number
-"set relativenumber
 nnoremap <leader><space> :noh<cr>
 set ruler
 set cmdheight=2
 set hlsearch
 set showmode
 set showcmd
-"set cursorline
 set wildmenu
 set showtabline=2
 
