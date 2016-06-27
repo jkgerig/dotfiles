@@ -8,11 +8,10 @@ set nocompatible
 " Make backspace delete over anything
 set backspace=indent,eol,start
 
+colorscheme jellybeans
+
 " Switch syntax highlighting on
 syntax on
-
-colorscheme murphy
-set background=dark
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
