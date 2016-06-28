@@ -1,5 +1,5 @@
 BoldAsFont=no
-Term=xterm-256color
+Term=xterm-16color
 FontSmoothing=full
 Font=Consolas
 FontHeight=12
@@ -17,5 +17,5 @@ Padding=5
 #ThemeFile=base16-solarized-mod.minttyrc
 #ThemeFile=base16-tomorrow-mod.minttyrc
 #ThemeFile=default-mintty.minttyrc
-#ThemeFile=solarized.minttyrc
-ThemeFile=solarized8_dark_high.minttyrc
+ThemeFile=solarized.minttyrc
+#ThemeFile=solarized8_dark_high.minttyrc
