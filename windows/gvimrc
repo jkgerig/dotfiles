@@ -20,7 +20,8 @@ syntax enable
 set background=dark
 "set background=light
 
-colorscheme slate
+"colorscheme slate
+colorscheme solarized
 
 " =============================================================================
 
@@ -54,3 +55,11 @@ set gfn=Consolas:h12:cANSI
 nnoremap j gj
 nnoremap k gk
 
+" remove the menu bar
+set guioptions-=m
+
+" remove the toolbar
+set guioptions-=T
+
+"remove the righthand scrollbar
+set guioptions-=r
