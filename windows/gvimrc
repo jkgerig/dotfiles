@@ -2,6 +2,9 @@
 " vimrc
 "
 
+execute pathogen#infect()
+execute pathogen#helptags()
+
 " Use Vim instead of Vi settings
 set nocompatible
 
@@ -25,8 +28,9 @@ colorscheme solarized
 
 " =============================================================================
 
-set nobackup
-set noswapfile
+set undodir=C:/Users/kgerig/vimfiles/undo//
+set backupdir=C:/Users/kgerig/vimfiles/backup//
+set directory=C:/Users/kgerig/vimfiles/swap//
 
 " tabs
 set autoindent
@@ -63,3 +67,6 @@ set guioptions-=T
 
 "remove the righthand scrollbar
 set guioptions-=r
+
+map <C-n> :NERDTreeToggle<CR>
+
