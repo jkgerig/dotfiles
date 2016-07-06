@@ -2,9 +2,6 @@
 " vimrc
 "
 
-" load pathogen and bundles
-execute pathogen#infect()
-
 " Use Vim instead of Vi settings
 set nocompatible
 
@@ -17,38 +14,21 @@ set backspace=indent,eol,start
 " Color settings
 " =============================================================================
 
-"syntax on
-"syntax enable
+syntax on
+syntax enable
 
-"set t_Co=8
-"set t_Co=16
-"set t_Co=256
-
-"let g:solarized_contrast="high"
-"colorscheme solarized
-"colorscheme solarized8_dark
-"colorscheme solarized8_dark_flat
-"colorscheme solarized8_dark_high
-"colorscheme solarized8_dark_low
-colorscheme base16-default
-
-"set background=dark
+set background=dark
 "set background=light
+
+"colorscheme slate
+"colorscheme solarized
+colorscheme default
 
 " =============================================================================
 
-"==============================================================================
-" COLORSCHEME SEQUENCING
-
-"set t_Co=16
-"syntax on
-"set bg=dark
-"colorscheme solarized
-
-"==============================================================================
-set backupdir=~/.vim/backup//
-set directory=~/.vim/backup//
-set undodir=~/.vim/backup//
+set undodir=~/vimfiles/undo//
+set nobackup
+set noswapfile
 
 " tabs
 set autoindent
@@ -74,4 +54,3 @@ set showtabline=2
 
 nnoremap j gj
 nnoremap k gk
-
