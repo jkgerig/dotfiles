@@ -11,6 +11,14 @@ filetype plugin indent on
 " Make backspace delete over anything
 set backspace=indent,eol,start
 
+" OS-specific path for .vim, vimfiles, etc.
+if has ("win32")
+    "windows uses $HOME/vimfiles
+    let MYVIMFILES=expand("$HOME") . '/vimfiles'
+else
+    let MYVIMFILES=expand("$HOME") . '/.vim'
+endif
+
 " Color settings
 " =============================================================================
 
@@ -19,13 +27,14 @@ syntax enable
 set background=dark
 "set background=light
 
-"colorscheme slate
+"colorscheme jellybeans
 colorscheme solarized
 "colorscheme default
+"colorscheme monokai
 
 " =============================================================================
-
-set undodir=~/vimfiles/undo//
+let &undodir = MYVIMFILES . '/undo//'
+set undofile
 set nobackup
 set noswapfile
 
