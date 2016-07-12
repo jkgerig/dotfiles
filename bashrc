@@ -79,4 +79,4 @@ man() {
 #==========================================================
 
 # custom prompt and color
-export PS1="\[${cGreen}\]\u \[${cBlue}\]\w \[${cReset}\]\$ "
+export PS1="\n\[${cGreen}\]\u \[${cBlue}\]\w \[${cReset}\]\n\$ "
