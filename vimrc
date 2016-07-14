@@ -62,6 +62,7 @@ set showtabline=2
 
 nnoremap j gj
 nnoremap k gk
+nnoremap <F8> :buffers<CR>:buffer<Space>
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader>l :set list!<CR>
