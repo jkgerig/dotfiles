@@ -80,3 +80,11 @@ man() {
 
 # custom prompt and color
 export PS1="\n\[${cGreen}\]\u \[${cBlue}\]\w \[${cReset}\]\n\$ "
+#export PS1=" \u \w \$ "
+
+# set default editor
+export VISUAL=vim
+export EDITOR=vim
+
+# attempt to show vi mode at command prompt
+#bind 'set show-mode-in-prompt on'
