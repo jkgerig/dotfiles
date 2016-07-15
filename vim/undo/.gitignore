@@ -1,0 +1,6 @@
+# this folder is needed to store Vim undo files, but we don't want to
+# sync these with git, so we ignore everything in this folder EXCEPT
+# the .gitignore file itself (also ensures that an undo folder exists
+# when cloning to a new location)
+*
+!.gitignore
