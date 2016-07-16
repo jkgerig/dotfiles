@@ -13,58 +13,8 @@ else
     let MYVIMFILES=expand("$HOME") . '/.vim'
 endif
 
-" ==========================================================
-" Use Vundle
-filetype off    " required
-
-" set runtime path to include Vundle and initialize
-let &rtp = &rtp . ',' . MYVIMFILES . '/bundle/vundle'
-call vundle#begin()
-" alterate location for vundle to install plugins
-"call vundle#begin('~/path/to/plugins')
-
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-
-" GitHub
-" Plugin 'tpope/vim-fugitive'
-
-" http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" List Plugins for Vundle here:
-" ==========================================================
-
-
-
-" ==========================================================
-
-" Vundle help/info:
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-call vundle#end()
-" end of Vundle setup
-" ==========================================================
+execute pathogen#infect()
+call pathogen#helptags()
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
