@@ -90,7 +90,7 @@ man() {
 #==========================================================
 
 # custom prompt and color
-export PS1="\n\[${cBoldRed}\]\u \[${cBlue}\]\w \[${cReset}\]\n\$ "
+export PS1="\n\[${cGreen}\]\u \[${cBlue}\]\w \[${cReset}\]\n\$ "
 #export PS1=" \u \w \$ "
 
 # set default editor
