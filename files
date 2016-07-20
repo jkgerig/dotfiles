@@ -1,0 +1,49 @@
+Resources:
+    https://www.freedesktop.org/wiki/Specifications/config-spec/
+    http://ciembor.github.io/4bit/#
+    http://misc.flogisoft.com/bash/tip_colors_and_formatting
+    http://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment
+    https://wiki.archlinux.org/index.php/Bash/Prompt_customization
+    http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+    http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x405.html
+    http://linuxcommand.org/lc3_adv_tput.php
+    http://www.freebsd.org/cgi/man.cgi?query=tput&sektion=1&apropos=0&manpath=redhat
+    https://www.gnu.org/software/termutils/manual/termutils-2.0/html_chapter/tput_1.html
+
+/etc/
+
+    inputrc
+    profile
+    bash_completion
+    bash_completion.d/
+    zshenv
+    zprofile
+    zshrc
+    zlogin
+    zlogout
+    tmux.conf
+
+$VIM/
+
+    vimrc
+    gvimrc
+
+$HOME/
+
+    .inputrc
+    .bash_profile
+    .bash_login
+    .profile
+    .bash_logout
+    .bashrc
+    .zshenv
+    .zprofile
+    .zshrc
+    .zlogin
+    .zlogout
+    .tmux.conf
+    .vimrc
+    .gvimrc
+    .gitconfig
+    .dir_colors
+
