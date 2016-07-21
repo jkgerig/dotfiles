@@ -1,0 +1,55 @@
+shell:
+
+            interactive       non-interactive 
+          +=================+================+
+          | ~/.bash_profile | $BASH_ENV      |
+    login |                 |                |
+          | ~/.bash_logout  | ~/.bash_logout |
+          +-----------------+----------------+
+non-login | ~/.bashrc       | $BASH_ENV      |
+          +=================+================+
+
+terminal:
+
+    colors:   0         8             16                  256
+          +=======+===========+================+=======================+
+          |       | use basic | use basic/     |                       |
+     ansi |  n/a  | colors/   | built-in       | <-- set to 16-colors  |
+          |       | defaults  | colorschemes   |                       |
+          +-------+-----------******************-----------------------+
+          |       | use basic * use custom     *                       |
+   custom |  n/a  | colors/   * colorschemes   * <-- set to 16-colors  |
+          |       | defaults  * (ex solarized) *                       |
+          +=======+===========******************=======================+
+
+program:
+
+    vim
+        variables:          settings:
+        ===============     ================
+        term/colors         colorscheme
+        os-type             vimrc location
+
+    tmux
+        variables:          settings:
+        ===============     ================
+        term/colors         TERM variable
+                            color-settings
+
+program     file (in ~/)    purpose
+========    ============    ================
+readline    .inputrc        command-line editing, completion settings
+
+bash        .bash_profile   environmental variables
+            .bashrc         aliases, completion-settings, custom prompt,
+                              color settings
+            .bash_logout    workspace/environment cleanup
+
+vim         .vimrc          colorscheme, custom key-bindings, various 
+                              config settings, plugins 
+tmux        .tmux.conf      colorscheme, custom key-bindings
+
+dircolors   .dir_colors     terminal colorscheme for ls
+
+mintty      .minttyrc       terminal colors for mintty (broaden to other 
+                              terminals?)
