@@ -1,0 +1,55 @@
+# inputrc file
+
+####### VARIABLES #######
+
+#bell-style [none/visible/audible]
+set bell-style none
+
+#colored-stats [on/off]
+set colored-stats on
+
+#completion-display-width [numeric]
+
+#completion-ignore-case [on/off]
+set completion-ignore-case on
+
+#completion-map-case [on/off]
+set completion-map-case on
+
+#completion-prefix-display-length [numeric]
+
+#mark-directories [on/off]
+set mark-directories on
+
+#mark-symlinked-directories [on/off]
+set mark-symlinked-directories on 
+
+#match-hidden-files [on/off]
+
+#menu-complete-display-prefix [on/off]
+set menu-complete-display-prefix on
+
+#show-all-if-ambiguous [on/off]
+
+#show-all-if-unmodified [on/off]
+
+#skip-completed-text [on/off]
+set skip-completed-text on
+
+#visible-stats [on/off]
+set visible-stats on
+
+####### BINDABLE COMMANDS #######
+
+#complete (TAB)
+
+#possible-completions (M-?)
+
+#insert-completions (M-*)
+
+#menu-complete ()
+TAB: menu-complete
+
+#menu-complete-backward ()
+"\e[Z": menu-complete-backward
+
