@@ -1,6 +1,6 @@
 # inputrc file
 
-####### VARIABLES #######
+##################### VARIABLES ############################
 
 #bell-style [none/visible/audible]
 set bell-style none
@@ -27,12 +27,13 @@ set mark-symlinked-directories on
 #match-hidden-files [on/off]
 
 #menu-complete-display-prefix [on/off]
-set menu-complete-display-prefix on
+#set menu-complete-display-prefix on
 
 #show-all-if-ambiguous [on/off]
-set show-all-if-ambiguous on
+#set show-all-if-ambiguous on
 
 #show-all-if-unmodified [on/off]
+set show-all-if-unmodified on
 
 #skip-completed-text [on/off]
 set skip-completed-text on
