@@ -1,0 +1,18 @@
+#!/bin/bash
+
+tput setaf 0 && echo "Black"
+tput setaf 1 && echo "Red"
+tput setaf 2 && echo "Green"
+tput setaf 3 && echo "Yellow"
+tput setaf 4 && echo "Blue"
+tput setaf 5 && echo "Magenta"
+tput setaf 6 && echo "Cyan"
+tput setaf 7 && echo "White"
+tput setaf 8 && echo "Bold Black"
+tput setaf 9 && echo "Bold Red"
+tput setaf 10 && echo "Bold Green"
+tput setaf 11 && echo "Bold Yellow"
+tput setaf 12 && echo "Bold Blue"
+tput setaf 13 && echo "Bold Magenta"
+tput setaf 14 && echo "Bold Cyan"
+tput setaf 15 && echo "Bold White"
