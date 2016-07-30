@@ -12,3 +12,4 @@ fi
 if [ -r "${HOME}/.bash_profile.local" ] ; then
     . "${HOME}/.bash_profile.local"
 fi
+_byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
