@@ -1,3 +1,5 @@
 [user]
 	name = Kris Gerig
 	email = kris.gerig@gmail.com
+[push]
+	default = simple
