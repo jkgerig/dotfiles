@@ -109,6 +109,17 @@ if [ "$color_term" = yes ]; then
     }
 fi
 
+# tar compression options reminder
+reptar() {
+    echo "tar compression options:"
+    echo
+    echo "  -J  --xz"
+    echo
+    echo "  -j  --bzip2"
+    echo
+    echo "  -z  --gzip"
+}
+
 # Custom Prompt
 # ======================================================================= #
 
