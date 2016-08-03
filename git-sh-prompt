@@ -318,8 +318,8 @@ __git_ps1 ()
 
 	case "$#" in
 		2|3)	pcmode=yes
-			ps1pc_start="$1"
-			ps1pc_end="$2"
+			ps1pc_start="${c_green}\u${c_clear}@${c_yellow}\h${c_clear}:${c_blue}\w${c_clear} "
+			ps1pc_end="\n\$ "
 			printf_format="${3:-$printf_format}"
 			# set PS1 to a plain prompt so that we can
 			# simply return early if the prompt should not

@@ -159,7 +159,7 @@ reptar() {
 # git-aware prompt
 source ~/.git-prompt.sh
 
-PROMPT_COMMAND='__git_ps1 "${c_green}\u${c_clear}@${c_yellow}\h${c_clear}:${c_blue}\w${c_clear} " "\\\n\\\$ "'
+PROMPT_COMMAND='__git_ps1 "arg1" "arg2"
 
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
