@@ -63,23 +63,49 @@ if [[ "$color_term" = yes && -x /usr/bin/dircolors ]]; then
 fi
 
 # variables for ANSI colors
-cBlack='\e[0;30m'
-cBoldBlack='\e[1;30m'
-cRed='\e[0;31m'
-cBoldRed='\e[1;31m'
-cGreen='\e[0;32m'
-cBoldGreen='\e[1;32m'
-cYellow='\e[0;33m'
-cBoldYellow='\e[1;33m'
-cBlue='\e[0;34m'
-cBoldBlue='\e[1;34m'
-cMagenta='\e[0;35m'
-cBoldMagenta='\e[1;35m'
-cCyan='\e[0;36m'
-cBoldCyan='\e[1;36m'
-cWhite='\e[0;37m'
-cBoldWhite='\e[1;37m'
-cReset='\e[0m'
+
+# Reset
+Color_Off='\e[0m'
+
+# Regular Colors
+Black='\e[0;30m'
+Red='\e[0;31m'
+Green='\e[0;32m'
+Yellow='\e[0;33m'
+Blue='\e[0;34m'
+Magenta='\e[0;35m'
+Cyan='\e[0;36m'
+White='\e[0;37m'
+
+# Bold Colors
+BBlack='\e[1;30m'
+BRed='\e[1;31m'
+BGreen='\e[1;32m'
+BYellow='\e[1;33m'
+BBlue='\e[1;34m'
+BMagenta='\e[1;35m'
+BCyan='\e[1;36m'
+BWhite='\e[1;37m'
+
+# Background
+On_Black='\e[0;40m'
+On_Red='\e[0;41m'
+On_Green='\e[0;42m'
+On_Yellow='\e[0;43m'
+On_Blue='\e[0;44m'
+On_Magenta='\e[0;45m'
+On_Cyan='\e[0;46m'
+On_White='\e[0;47m'
+
+# Bold Background (?)
+On_BBlack='\e[1;40m'
+On_BRed='\e[1;41m'
+On_BGreen='\e[1;42m'
+On_BYellow='\e[1;43m'
+On_BBlue='\e[1;44m'
+On_BMagenta='\e[1;45m'
+On_BCyan='\e[1;46m'
+On_BWhite='\e[1;47m'
 
 # colorized man pages
 if [ "$color_term" = yes ]; then
@@ -125,7 +151,7 @@ reptar() {
 
 # custom prompt and color
 if [ "$color_term" = yes ]; then
-    PS1="\n\[${cGreen}\]\u \[${cBlue}\]\w \[${cReset}\]\n\$ "
+    PS1="\n\[${Green}\]\u \[${Blue}\]\w \[${Color_Off}\]\n\$ "
 else
     PS1='\n\u \w\n\$ '
 fi
