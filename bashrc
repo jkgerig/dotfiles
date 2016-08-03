@@ -65,7 +65,7 @@ fi
 # variables for ANSI colors
 
 # Reset
-Color_Off='\e[0m'
+Color_Reset='\e[0m'
 
 # Regular Colors
 Black='\e[0;30m'
@@ -150,9 +150,18 @@ reptar() {
 # ======================================================================= #
 
 # custom prompt and color
-if [ "$color_term" = yes ]; then
-    PS1="\n\[${Green}\]\u \[${Blue}\]\w \[${Color_Off}\]\n\$ "
-else
-    PS1='\n\u \w\n\$ '
-fi
+#if [ "$color_term" = yes ]; then
+#    PS1="\n\[${Green}\]\u \[${Blue}\]\w \[${Color_Reset}\]\n\$ "
+#else
+#    PS1='\n\u \w\n\$ '
+#fi
 
+# git-aware prompt
+source ~/.git-prompt.sh
+
+PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_SHOWCOLORHINTS=1
