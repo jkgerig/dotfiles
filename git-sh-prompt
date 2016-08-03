@@ -246,8 +246,9 @@ __git_ps1_colorize_gitstring ()
 		# issues with command line editing/browsing/completion!
 		local c_red='\[\e[31m\]'
 		local c_green='\[\e[32m\]'
-		local c_lblue='\[\e[1;34m\]'
+		local c_lblue='\[\e[34m\]'
 		local c_clear='\[\e[0m\]'
+        local c_yellow='\[\e[33m\]'
 	fi
 	local bad_color=$c_red
 	local ok_color=$c_green
@@ -301,8 +302,8 @@ __git_ps1 ()
 	local exit=$?
 	local pcmode=no
 	local detached=no
-	local ps1pc_start='\u@\h:\w '
-	local ps1pc_end='\$ '
+	local ps1pc_start='${c_green}\u${c_clear}@${c_yellow}\h${c_clear}:${c_lblue}\w${c_clear} '
+	local ps1pc_end='\n\$ '
 	local printf_format=' (%s)'
 
 	case "$#" in
