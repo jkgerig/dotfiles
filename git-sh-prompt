@@ -302,8 +302,8 @@ __git_ps1 ()
 	local exit=$?
 	local pcmode=no
 	local detached=no
-	local ps1pc_start='${c_green}\u${c_clear}@${c_yellow}\h${c_clear}:${c_lblue}\w${c_clear} '
-	local ps1pc_end='\n\$ '
+	local ps1pc_start="${c_green}\u${c_clear}@${c_yellow}\h${c_clear}:${c_lblue}\w${c_clear} "
+	local ps1pc_end="\n\$ "
 	local printf_format=' (%s)'
 
 	case "$#" in
