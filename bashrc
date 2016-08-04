@@ -2,6 +2,8 @@
 # bashrc
 #
 
+BASH_RC_START=1
+
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
@@ -168,3 +170,5 @@ GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=1
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+BASH_RC_END=1
