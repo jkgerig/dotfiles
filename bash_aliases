@@ -1,7 +1,5 @@
 # bash_aliases
 
-BASH_ALIASES_START=1
-
 # ls
 alias ls='ls -hF --color=auto'
 alias ll='ls -al --color=auto'
@@ -20,4 +18,3 @@ alias rm='rm -Iv --one-file-system --preserve-root'
 # less print more info about location in file
 alias less='less -M'
 
-BASH_ALIASES_END=1

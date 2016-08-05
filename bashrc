@@ -2,8 +2,6 @@
 # bashrc
 #
 
-BASH_RC_START=1
-
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
@@ -171,4 +169,19 @@ GIT_PS1_SHOWCOLORHINTS=1
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-BASH_RC_END=1
+# remove duplicate entries from PATH
+# as seen in: https://unix.stackexchange.com/questions/40749/remote-duplicate-path-entries-with-awk-command
+
+if [ -n "$PATH" ]; then
+    old_PATH=$PATH:; PATH=
+    while [ -n "$old_PATH" ]; do
+        x=${old_PATH%%:*}            # the first remaining entry
+        case $PATH: in
+            *:"$x":*) ;;             # already there
+            *) PATH=$PATH:$x;;       # not there yet
+        esac
+        old_PATH=${old_PATH#*:}
+    done
+    PATH=${PATH#:}
+    unset old_PATH x
+fi
