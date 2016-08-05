@@ -167,8 +167,6 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=1
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 # remove duplicate entries from PATH
 # as seen in: https://unix.stackexchange.com/questions/40749/remote-duplicate-path-entries-with-awk-command
 
