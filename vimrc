@@ -101,3 +101,6 @@ function! SummarizeTabs()
 endfunction
 
 nmap <leader>t :set expandtab!<CR>:set expandtab?<CR>
+
+set timeout timeoutlen=3000 ttimeoutlen=100
+
