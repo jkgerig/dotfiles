@@ -100,7 +100,12 @@ function! SummarizeTabs()
     endtry
 endfunction
 
-nmap <leader>t :set expandtab!<CR>:set expandtab?<CR>
+nmap <leader><Tab> :set expandtab!<CR>:set expandtab?<CR>
 
 set timeout timeoutlen=3000 ttimeoutlen=100
+
+" table-mode mappings
+let g:table_mode_map_prefix = '<Leader>t'
+let g:table_mode_toggle_map = 'm'
+
 
