@@ -66,11 +66,12 @@ nmap <leader>l :set list!<CR>
 " Toggle background (solarized colorscheme)
 call togglebg#map("<F5>")
 
-" Remap chaning focus of split windows
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" Disabling for vim-tmux-navigator (see below)
+"" Remap chaning focus of split windows
+"map <C-h> <C-w>h
+"map <C-j> <C-w>j
+"map <C-k> <C-w>k
+"map <C-l> <C-w>l
 
 " Keep tabs consistent. See: http://vimcasts.org/episodes/tabs-and-spaces/
 command! -nargs=* Stab call Stab()
@@ -102,10 +103,20 @@ endfunction
 
 nmap <leader><Tab> :set expandtab!<CR>:set expandtab?<CR>
 
-set timeout timeoutlen=3000 ttimeoutlen=100
+set timeout timeoutlen=1500 ttimeoutlen=100
 
 " table-mode mappings
 let g:table_mode_map_prefix = '<Leader>t'
 let g:table_mode_toggle_map = 'm'
 
+" vim-tmux-navigator settings
+let g:tmux_navigator_no_mappings = 1
 
+nnoremap <silent> <c-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <c-j> :TmuxNavigateDown<CR>
+nnoremap <silent> <c-k> :TmuxNavigateUp<CR>
+nnoremap <silent> <c-l> :TmuxNavigateRight<CR>
+
+" splits
+nmap <leader>sl :rightbelow vnew<CR>
+nmap <leader>sj :rightbelow new<CR>
