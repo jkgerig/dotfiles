@@ -1,9 +1,0 @@
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/table-mode"]
-	path = vim/bundle/table-mode
-	url = https://github.com/dhruvasagar/vim-table-mode.git
-[submodule "vim/bundle/vim-tmux-navigator"]
-	path = vim/bundle/vim-tmux-navigator
-	url = git@github.com:jkgerig/vim-tmux-navigator.git
