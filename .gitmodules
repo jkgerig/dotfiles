@@ -6,4 +6,4 @@
 	url = https://github.com/dhruvasagar/vim-table-mode.git
 [submodule "vim/bundle/vim-tmux-navigator"]
 	path = vim/bundle/vim-tmux-navigator
-	url = https://github.com/christoomey/vim-tmux-navigator.git
+	url = https://github.com/jkgerig/vim-tmux-navigator.git
