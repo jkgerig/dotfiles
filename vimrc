@@ -58,20 +58,9 @@ set showtabline=2
 
 nnoremap j gj
 nnoremap k gk
-nnoremap <F8> :buffers<CR>:buffer<Space>
-
-nmap <leader>v :tabedit $MYVIMRC<CR>
-nmap <leader>l :set list!<CR>
 
 " Toggle background (solarized colorscheme)
 call togglebg#map("<F5>")
-
-" Disabling for vim-tmux-navigator (see below)
-"" Remap chaning focus of split windows
-"map <C-h> <C-w>h
-"map <C-j> <C-w>j
-"map <C-k> <C-w>k
-"map <C-l> <C-w>l
 
 " Keep tabs consistent. See: http://vimcasts.org/episodes/tabs-and-spaces/
 command! -nargs=* Stab call Stab()
@@ -102,12 +91,11 @@ function! SummarizeTabs()
 endfunction
 
 nmap <leader><Tab> :set expandtab!<CR>:set expandtab?<CR>
+nmap <leader>v :tabedit $MYVIMRC<CR>
+nmap <leader>l :set list!<CR>
+nmap <leader>b :buffers<CR>:buffer<Space>
 
 set timeout timeoutlen=1500 ttimeoutlen=100
-
-" table-mode mappings
-let g:table_mode_map_prefix = '<Leader>t'
-let g:table_mode_toggle_map = 'm'
 
 " vim-tmux-navigator settings
 let g:tmux_navigator_no_mappings = 1
