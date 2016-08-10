@@ -188,3 +188,8 @@ fi
 #    #if not inside a tmux session, and if no session is started, start a new session
 #    test -z "$TMUX" && (tmux attach || tmux new-session)
 #fi
+
+# source local file, if it exists
+if [ -r "${HOME}/.bashrc.local" ] ; then
+    . "${HOME}/.bashrc.local"
+fi
