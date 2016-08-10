@@ -55,6 +55,7 @@ set showmode
 set showcmd
 set wildmenu
 set showtabline=2
+set hidden
 
 nnoremap j gj
 nnoremap k gk
@@ -100,10 +101,26 @@ set timeout timeoutlen=1500 ttimeoutlen=100
 " vim-tmux-navigator settings
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <c-h> :TmuxNavigateLeft<CR>
-nnoremap <silent> <c-j> :TmuxNavigateDown<CR>
-nnoremap <silent> <c-k> :TmuxNavigateUp<CR>
-nnoremap <silent> <c-l> :TmuxNavigateRight<CR>
+nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-j> :TmuxNavigateDown<CR>
+nnoremap <silent> <C-k> :TmuxNavigateUp<CR>
+nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
+
+" vim-tmux-navigator - additional settings - can't get this to work...
+"nnoremap <silent> <C-M-h> :vertical resize -5<CR>
+"nnoremap <silent> <C-M-j> :resize +5<CR>
+"nnoremap <silent> <C-M-k> :resize -5<CR>
+"nnoremap <silent> <C-M-l> :vertical resize +5<CR>
+
+"nnoremap <silent> <M-h> :tabprevious<CR>
+"nnoremap <silent> <M-l> :tabnext<CR>
+"nnoremap <silent> <M-j> :bn<CR>
+"nnoremap <silent> <M-k> :bp<CR>
+
+nnoremap <silent> h :tabprevious
+nnoremap <silent> l :tabnext
+nnoremap <silent> j :bn
+nnoremap <silent> k :bp
 
 " splits
 nmap <leader>sl :rightbelow vnew<CR>
