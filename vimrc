@@ -54,6 +54,7 @@ set hlsearch
 set showmode
 set showcmd
 set wildmenu
+set wildignorecase
 set showtabline=2
 set hidden
 
