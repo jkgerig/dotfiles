@@ -135,3 +135,11 @@ let wiki_1.path = '~/Dropbox/vimwiki/'
 let wiki_1.index = 'index'
 
 let g:vimwiki_list = [wiki_1]
+
+"Syntax highlighting under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+"gabrielelana-vim-markdown settings
+let g:markdown_enable_spell_checking = 0
