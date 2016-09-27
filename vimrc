@@ -133,13 +133,5 @@ let g:vimwiki_global_ext = 0
 let wiki_1 = {}
 let wiki_1.path = '~/Dropbox/vimwiki/'
 let wiki_1.index = 'index'
-let wiki_1.syntax = 'markdown'
-let wiki_1.ext = '.md'
 
-let wiki_2 = {}
-let wiki_2.path = '~/Dropbox/refwiki/'
-let wiki_2.index = 'index'
-"let wiki_2.syntax = 'markdown'
-"let wiki_2.ext = ''
-
-let g:vimwiki_list = [wiki_1, wiki_2]
+let g:vimwiki_list = [wiki_1]
