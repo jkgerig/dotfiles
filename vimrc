@@ -9,6 +9,10 @@ set nocompatible
 let g:pathogen_disabled = []
 
 call add(g:pathogen_disabled, 'gabrielelana-vim-markdown')
+call add(g:pathogen_disabled, 'junegunn_limelight')
+call add(g:pathogen_disabled, 'plasticboy_vim-markdown')
+call add(g:pathogen_disabled, 'reedes_vim-pencil')
+call add(g:pathogen_disabled. 'vim-pandoc_vim-pandoc-syntax')
 
 execute pathogen#infect()
 call pathogen#helptags()
