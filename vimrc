@@ -5,6 +5,11 @@
 " Use Vim instead of Vi settings
 set nocompatible
 
+" Temporarily disabled plugins
+let g:pathogen_disabled = []
+
+call add(g:pathogen_disabled, 'gabrielelana-vim-markdown')
+
 execute pathogen#infect()
 call pathogen#helptags()
 
