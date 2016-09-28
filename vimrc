@@ -72,8 +72,8 @@ set wildignorecase
 set showtabline=2
 set hidden
 
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 " Toggle background (solarized colorscheme)
 call togglebg#map("<F5>")
@@ -132,10 +132,10 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
 "nnoremap <silent> <M-j> :bn<CR>
 "nnoremap <silent> <M-k> :bp<CR>
 
-nnoremap <silent> h :tabprevious
-nnoremap <silent> l :tabnext
-nnoremap <silent> j :bn
-nnoremap <silent> k :bp
+nnoremap <silent> h :tabprevious<CR>
+nnoremap <silent> l :tabnext<CR>
+nnoremap <silent> j :bn<CR>
+nnoremap <silent> k :bp<CR>
 
 " splits
 nmap <leader>sl :rightbelow vnew<CR>
