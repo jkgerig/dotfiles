@@ -8,11 +8,16 @@ set nocompatible
 " Temporarily disabled plugins
 let g:pathogen_disabled = []
 
-call add(g:pathogen_disabled, 'gabrielelana-vim-markdown')
+"call add(g:pathogen_disabled, 'gabrielelana-vim-markdown')
+call add(g:pathogen_disabled, 'godlygeek-tabular')
+call add(g:pathogen_disabled, 'junegunn-goyo')
 call add(g:pathogen_disabled, 'junegunn_limelight')
 call add(g:pathogen_disabled, 'plasticboy_vim-markdown')
 call add(g:pathogen_disabled, 'reedes_vim-pencil')
+"call add(g:pathogen_disabled, 'vim-colors-solarized')
 call add(g:pathogen_disabled, 'vim-pandoc_vim-pandoc-syntax')
+"call add(g:pathogen_disabled, 'vim-tmux-navigator')
+"call add(g:pathogen_disabled, 'vimwiki')
 
 execute pathogen#infect()
 call pathogen#helptags()
