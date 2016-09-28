@@ -8,7 +8,7 @@ set nocompatible
 " Temporarily disabled plugins
 let g:pathogen_disabled = []
 
-"call add(g:pathogen_disabled, 'gabrielelana-vim-markdown')
+call add(g:pathogen_disabled, 'gabrielelana-vim-markdown')
 call add(g:pathogen_disabled, 'junegunn_limelight')
 call add(g:pathogen_disabled, 'plasticboy_vim-markdown')
 call add(g:pathogen_disabled, 'reedes_vim-pencil')
