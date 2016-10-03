@@ -5,21 +5,6 @@
 " Use Vim instead of Vi settings
 set nocompatible
 
-" Temporarily disabled plugins
-let g:pathogen_disabled = []
-
-"call add(g:pathogen_disabled, 'gabrielelana-vim-markdown')
-"call add(g:pathogen_disabled, 'godlygeek-tabular')
-call add(g:pathogen_disabled, 'junegunn-goyo')
-call add(g:pathogen_disabled, 'junegunn_limelight')
-call add(g:pathogen_disabled, 'plasticboy_vim-markdown')
-call add(g:pathogen_disabled, 'reedes_vim-pencil')
-"call add(g:pathogen_disabled, 'vim-colors-solarized')
-call add(g:pathogen_disabled, 'vim-pandoc_vim-pandoc')
-call add(g:pathogen_disabled, 'vim-pandoc_vim-pandoc-syntax')
-"call add(g:pathogen_disabled, 'vim-tmux-navigator')
-"call add(g:pathogen_disabled, 'vimwiki')
-
 execute pathogen#infect()
 call pathogen#helptags()
 
@@ -38,10 +23,8 @@ set backspace=indent,eol,start
 syntax enable
 
 set background=dark
-"set background=light
 
 colorscheme solarized
-"colorscheme default
 
 " ==========================================================
 set undodir="~/.vim/undo//"
@@ -72,9 +55,6 @@ set wildmenu
 set wildignorecase
 set showtabline=2
 set hidden
-
-"nnoremap j gj
-"nnoremap k gk
 
 " Toggle background (solarized colorscheme)
 call togglebg#map("<F5>")
@@ -121,17 +101,6 @@ nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <C-j> :TmuxNavigateDown<CR>
 nnoremap <silent> <C-k> :TmuxNavigateUp<CR>
 nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
-
-" vim-tmux-navigator - additional settings - can't get this to work...
-"nnoremap <silent> <C-M-h> :vertical resize -5<CR>
-"nnoremap <silent> <C-M-j> :resize +5<CR>
-"nnoremap <silent> <C-M-k> :resize -5<CR>
-"nnoremap <silent> <C-M-l> :vertical resize +5<CR>
-
-"nnoremap <silent> <M-h> :tabprevious<CR>
-"nnoremap <silent> <M-l> :tabnext<CR>
-"nnoremap <silent> <M-j> :bn<CR>
-"nnoremap <silent> <M-k> :bp<CR>
 
 nnoremap <silent> h :tabprevious<CR>
 nnoremap <silent> l :tabnext<CR>
