@@ -43,7 +43,7 @@ fi
 #   assign repo and plugin_dir variables:
 for repo in `cat vim-plugins-list.txt`; do
     plugin_dir=$(echo $repo | \
-        sed -r -e 's/.+\.com\/([^\/]+\/)/\1/' \
+        sed -r -e 's/.+\.com.([^\/]+\/)/\1/' \
         -e 's/\//_/' \
         -e 's/\.git//')
     # if plugin_dir does NOT exist, trigger git clone
