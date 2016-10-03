@@ -1,0 +1,11 @@
+https://github.com/gabrielelana/vim-markdown.git
+https://github.com/godlygeek/tabular.git
+https://github.com/junegunn/goyo.vim.git
+https://github.com/junegunn/limelight.vim.git
+https://github.com/plasticboy/vim-markdown.git
+https://github.com/reedes/vim-pencil.git
+https://github.com/altercation/vim-colors-solarized.git
+https://github.com/vim-pandoc/vim-pandoc.git
+https://github.com/vim-pandoc/vim-pandoc-syntax.git
+https://github.com/christoomey/vim-tmux-navigator.git
+https://github.com/vimwiki/vimwiki.git
