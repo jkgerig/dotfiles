@@ -148,3 +148,6 @@ let g:pandoc#syntax#conceal#blacklist = ["atx", "list", "newline",
     "ellipses
     "quotes
     "inlinecode
+
+let g:pandoc#spell#enabled = 0
+let g:pandoc#modules#disabled = ["folding"]
