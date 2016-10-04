@@ -2,3 +2,4 @@ https://github.com/altercation/vim-colors-solarized.git
 https://github.com/christoomey/vim-tmux-navigator.git
 https://github.com/godlygeek/tabular.git
 https://github.com/vimwiki/vimwiki.git
+https://github.com/junegunn/vim-easy-align.git
