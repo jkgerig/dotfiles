@@ -125,5 +125,26 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-"gabrielelana-vim-markdown settings
-let g:markdown_enable_spell_checking = 0
+let g:pandoc#syntax#conceal#urls = 1
+
+let g:pandoc#syntax#conceal#blacklist = ["atx", "list", "newline",
+            \ "codeblock_start", "codeblock_delim", "block"]
+
+"possible values for g:pandoc#syntax#conceal#blacklist
+    "titleblock 
+    "image
+    "block
+    "subscript
+    "superscript
+    "strikeout
+    "atx
+    "codeblock_start
+    "codeblock_delim
+    "footnote
+    "definition
+    "list
+    "newline
+    "dashes
+    "ellipses
+    "quotes
+    "inlinecode

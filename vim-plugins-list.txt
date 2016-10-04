@@ -2,5 +2,5 @@ https://github.com/altercation/vim-colors-solarized.git
 https://github.com/christoomey/vim-tmux-navigator.git
 https://github.com/godlygeek/tabular.git
 https://github.com/vimwiki/vimwiki.git
-https://github.com/vim-pandoc/vim-pandoc
-https://github.com/vim-pandoc/vim-pandoc-syntax
+git@github.com:jkgerig/vim-pandoc.git
+git@github.com:jkgerig/vim-pandoc-syntax.git
