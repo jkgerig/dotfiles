@@ -134,3 +134,9 @@ augroup pencil
     autocmd FileType text         call pencil#init()
 augroup END
 
+" Color for limelight background dimming
+let g:limelight_conceal_ctermfg = '240'
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+nmap <leader>gg :Goyo<CR>
