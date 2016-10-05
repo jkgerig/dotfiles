@@ -127,3 +127,4 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 "Align GFM tables
 au FileType markdown vmap <leader><bslash> :EasyAlign*<BAR><CR>
+
