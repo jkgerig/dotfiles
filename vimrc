@@ -140,3 +140,5 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 nmap <leader>gg :Goyo<CR>
+
+nmap <silent> <leader>bd :bp\|bd #<CR>
