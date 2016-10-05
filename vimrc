@@ -128,11 +128,11 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 "Align GFM tables
 au FileType markdown vmap <leader><bslash> :EasyAlign*<BAR><CR>
 
-augroup pencil
-    autocmd!
-    autocmd FileType markdown,mkd call pencil#init()
-    autocmd FileType text         call pencil#init()
-augroup END
+"augroup pencil
+"    autocmd!
+"    autocmd FileType markdown,mkd call pencil#init()
+"    autocmd FileType text         call pencil#init()
+"augroup END
 
 " Color for limelight background dimming
 let g:limelight_conceal_ctermfg = '240'
