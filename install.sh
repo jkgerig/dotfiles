@@ -12,6 +12,8 @@ cd
 mkdir .oldrc
 
 mv -t .oldrc/ \
+    .bin/ \
+    .lib/ \
     .bash_aliases \
     .bash_logout \
     .bash_profile \
@@ -26,6 +28,8 @@ mv -t .oldrc/ \
     .vimrc \
     .Xresources
 
+ln -s .dotfiles/bin .bin
+ln -s .dotfiles/lib .lib
 ln -s .dotfiles/bash_aliases .bash_aliases
 ln -s .dotfiles/bash_logout .bash_logout
 ln -s .dotfiles/bash_profile .bash_profile
