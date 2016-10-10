@@ -5,6 +5,10 @@ if [ -d "${HOME}/bin" ] ; then
   PATH="${HOME}/bin:${PATH}"
 fi
 
+if [ -d "${HOME}/.bin" ] ; then
+    PATH="${HOME}/.bin:$PATH"
+fi
+
 # source local file if it exists
 if [ -r "${HOME}/.bash_profile.local" ] ; then
     . "${HOME}/.bash_profile.local"
