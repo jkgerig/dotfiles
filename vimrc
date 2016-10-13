@@ -147,3 +147,6 @@ nmap <silent> <leader>bd :bp\|bd #<CR>
 let &t_SI = "\<ESC>[5 q"
 let &t_SR = "\<ESC>[3 q"
 let &t_EI = "\<ESC>[1 q"
+
+" Experiment w/linebreak
+set linebreak
