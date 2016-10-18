@@ -115,11 +115,11 @@ nmap <leader>sj :rightbelow new<CR>
 let g:vimwiki_global_ext = 0
 
 let wiki_1 = {}
-let wiki_1.path = '~/Dropbox/vimwiki/'
+let wiki_1.path = '~/Dropbox/wiki/vimwiki/'
 let wiki_1.index = 'index'
 
 let wiki_2 = {}
-let wiki_2.path = '~/Dropbox/refwiki/'
+let wiki_2.path = '~/Dropbox/wiki/refwiki/'
 let wiki_2.index = 'index'
 
 let g:vimwiki_list = [wiki_1, wiki_2]
