@@ -122,7 +122,13 @@ let wiki_2 = {}
 let wiki_2.path = '~/Dropbox/wiki/refwiki/'
 let wiki_2.index = 'index'
 
-let g:vimwiki_list = [wiki_1, wiki_2]
+let wiki_3 = {}
+let wiki_3.path = '~/Dropbox/wiki/infowiki/'
+let wiki_3.path_html = '~/Dropbox/wiki/infowiki/html'
+let wiki_3.auto_export = 1
+let wiki_3.index = 'index'
+
+let g:vimwiki_list = [wiki_1, wiki_2, wiki_3]
 
 "Syntax highlighting under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
