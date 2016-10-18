@@ -4,4 +4,4 @@ https://github.com/junegunn/goyo.vim.git
 https://github.com/junegunn/limelight.vim.git
 https://github.com/junegunn/vim-easy-align.git
 https://github.com/reedes/vim-pencil.git
-https://github.com/vimwiki/vimwiki.git
+git@github.com:jkgerig/vimwiki.git
