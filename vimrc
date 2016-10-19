@@ -132,9 +132,6 @@ let wiki_3.index = 'index'
 
 let g:vimwiki_list = [wiki_1, wiki_2, wiki_3]
 
-autocmd Filetype vimwiki nmap <leader>wl <Plug>VimwikiVSplitLink<CR>
-autocmd Filetype vimwiki nmap <leader>wj <Plug>VimwikiSplitLink<CR>
-
 "Syntax highlighting under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"

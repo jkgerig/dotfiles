@@ -16,5 +16,6 @@ alias mv='mv -iv'
 alias rm='rm -Iv --one-file-system --preserve-root'
 
 # less print more info about location in file
-alias less='less -M'
+# and case-insensitive searches
+alias less='less -Mi'
 
