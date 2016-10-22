@@ -3,7 +3,7 @@ URxvt.scrollBar:   false
 URxvt.cursorBlink: true
  
 ! font
-URxvt.font: xft:Ubuntu Mono:style=Regular:size=13
+URxvt.font: xft:Ubuntu Mono:style=Regular:size=14
 URxvt.boldFont: 
 ! terminal padding
 URxvt.internalBorder: 5
