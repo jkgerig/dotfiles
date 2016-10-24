@@ -3,7 +3,7 @@
 bind-key -n S-F12 source $HOME/.tmux.f-keys.disable \; display-message "tmux F-keys disabled, press S-F12 to re-enable."
 
 bind-key -n F2 new-window -c "$HOME" \; rename-window "-"
-bind-key -n F12 split-window -v -c "#{pane_current_path}"
+bind-key -n S-F2 split-window -v -c "#{pane_current_path}"
 bind-key -n C-F2 split-window -h -c "#{pane_current_path}"
 bind-key -n C-S-F2 new-session 
 

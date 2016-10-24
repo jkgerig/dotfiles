@@ -3,7 +3,7 @@
 bind-key -n S-F12 source $HOME/.tmux.f-keys.enable \; display-message "tmux F-keys enabled. Press S-F12 to disable."
 
 unbind-key -n F2
-unbind-key -n F12
+unbind-key -n S-F2
 unbind-key -n C-F2
 unbind-key -n C-S-F2
 
