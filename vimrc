@@ -156,9 +156,18 @@ nmap <leader>gg :Goyo<CR>
 nmap <silent> <leader>bd :bp\|bd #<CR>
 
 " Testing change cursor shape in insert/normal/replace modes
-let &t_SI = "\<ESC>[5 q"
-let &t_SR = "\<ESC>[3 q"
-let &t_EI = "\<ESC>[1 q"
+" adding conditional to check if we are in a tmux session
+" to pass along the correct escape codes
+
+if $TMUX == ""
+    let &t_SI = "\<ESC>[5 q"
+    let &t_SR = "\<ESC>[3 q"
+    let &t_EI = "\<ESC>[1 q"
+else
+    let &t_SI = "\<ESC>Ptmux;\<ESC>\<ESC>[5 q\<ESC>\\"
+    let &t_SR = "\<ESC>Ptmux;\<ESC>\<ESC>[3 q\<ESC>\\"
+    let &t_EI = "\<ESC>Ptmux;\<ESC>\<ESC>[1 q\<ESC>\\"
+endif
 
 " Experiment w/linebreak
 set linebreak
