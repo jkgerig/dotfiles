@@ -80,3 +80,5 @@ urxvt*colorULMode:     true
 urxvt*colorUL:         cyan
 
 URxvt.letterSpace: -1
+
+URxvt.keysym.S-F2:  \033[12$
