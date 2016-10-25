@@ -91,6 +91,7 @@ nmap <leader><Tab> :set expandtab!<CR>:set expandtab?<CR>
 nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader>l :set list!<CR>
 nmap <leader>b :buffers<CR>:buffer<Space>
+nmap <leader>t :tabnew<CR>
 
 set timeout timeoutlen=1500 ttimeoutlen=100
 
