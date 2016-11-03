@@ -55,6 +55,10 @@ set wildmenu
 set wildignorecase
 set showtabline=2
 set hidden
+set ignorecase
+set smartcase
+set splitbelow
+set splitright
 
 " Toggle background (solarized colorscheme)
 call togglebg#map("<F5>")
@@ -132,6 +136,9 @@ let wiki_3.auto_export = 1
 let wiki_3.index = 'index'
 
 let g:vimwiki_list = [wiki_1, wiki_2, wiki_3]
+
+au FileType vimwiki nmap <silent><buffer> <leader>wj <Plug>VimwikiSplitLink
+au FileType vimwiki nmap <silent><buffer> <leader>wl <Plug>VimwikiVSplitLink
 
 "Syntax highlighting under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
