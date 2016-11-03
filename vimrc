@@ -122,6 +122,9 @@ let g:vimwiki_global_ext = 0
 let wiki_1 = {}
 let wiki_1.path = '~/Dropbox/wiki/vimwiki/'
 let wiki_1.path_html = '~/Dropbox/wiki/vimwiki/html'
+let wiki_1.template_path = '~/Dropbox/wiki/vimwiki/html/templates'
+let wiki_1.template_default = 'def_template'
+let wiki_1.template_ext = '.html'
 let wiki_1.auto_export = 1
 let wiki_1.index = 'index'
 
