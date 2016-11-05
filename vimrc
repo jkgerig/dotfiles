@@ -151,6 +151,9 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 "Align GFM tables
 au FileType markdown vmap <leader><bslash> :EasyAlign*<BAR><CR>
 
+au FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+au FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
 "augroup pencil
 "    autocmd!
 "    autocmd FileType markdown,mkd call pencil#init()
