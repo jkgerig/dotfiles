@@ -122,23 +122,13 @@ let g:vimwiki_global_ext = 0
 let wiki_1 = {}
 let wiki_1.path = '~/Dropbox/wiki/vimwiki/'
 let wiki_1.path_html = '~/Dropbox/wiki/vimwiki/html'
-let wiki_1.template_path = '~/Dropbox/wiki/vimwiki/templates'
+let wiki_1.template_path = '~/Dropbox/wiki/vimwiki/templates/html'
 let wiki_1.template_default = 'def_template'
 let wiki_1.template_ext = '.html'
 let wiki_1.auto_export = 1
 let wiki_1.index = 'index'
 
-let wiki_2 = {}
-let wiki_2.path = '~/Dropbox/wiki/refwiki/'
-let wiki_2.index = 'index'
-
-let wiki_3 = {}
-let wiki_3.path = '~/Dropbox/wiki/infowiki/'
-let wiki_3.path_html = '~/Dropbox/wiki/infowiki/html'
-let wiki_3.auto_export = 1
-let wiki_3.index = 'index'
-
-let g:vimwiki_list = [wiki_1, wiki_2, wiki_3]
+let g:vimwiki_list = [wiki_1]
 
 au FileType vimwiki nmap <silent><buffer> <leader>wj <Plug>VimwikiSplitLink
 au FileType vimwiki nmap <silent><buffer> <leader>wl <Plug>VimwikiVSplitLink
