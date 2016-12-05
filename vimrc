@@ -117,7 +117,7 @@ nmap <leader>sl :rightbelow vnew<CR>
 nmap <leader>sj :rightbelow new<CR>
 
 " vimwiki settings
-let g:vimwiki_dir_link = ''
+let g:vimwiki_dir_link = 'main'
 let g:vimwiki_global_ext = 0
 
 let wiki_1 = {}
