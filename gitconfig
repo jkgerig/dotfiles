@@ -4,4 +4,4 @@
 [push]
 	default = simple
 [credential]
-	helper = netrc -f ~/.netrc.gpg -v
+	helper = store
