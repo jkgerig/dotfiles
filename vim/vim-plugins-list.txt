@@ -1,4 +1,4 @@
 https://github.com/altercation/vim-colors-solarized.git
 https://github.com/christoomey/vim-tmux-navigator.git
-https://github.com/vim-pandoc/vim-pandoc.git
-https://github.com/vim-pandoc/vim-pandoc-syntax.git
+https://github.com/godlygeek/tabular.git
+https://github.com/gabrielelana/vim-markdown.git
