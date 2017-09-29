@@ -1,6 +1,6 @@
 # tmux key-bindings
 
-bind-key -n S-F12 source $HOME/.tmux.f-keys.disable \; display-message "tmux F-keys disabled, press S-F12 to re-enable."
+bind-key -n S-F12 source $HOME/.tmux-keys-disable \; display-message "tmux F-keys disabled, press S-F12 to re-enable."
 
 bind-key -n F2 new-window -c "$HOME" \; rename-window "-"
 bind-key -n S-F2 split-window -v -c "#{pane_current_path}"

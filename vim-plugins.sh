@@ -24,13 +24,6 @@ else
     echo '~/.vim/bundle already exists, skipping.'
 fi
 
-# If ~/.vim/undo does NOT exist, create it.
-if [ ! -d ~/.vim/undo ] ; then
-    mkdir ~/.vim/undo
-else
-    echo '~/.vim/undo already exists, skipping.'
-fi
-
 # If ~/.vim/autoload/pathogen.vim does NOT exist, download it:
 if [ ! -f ~/.vim/autoload/pathogen.vim ] ; then
     echo 'Downloading pathogen.vim...'

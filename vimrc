@@ -27,8 +27,7 @@ set background=dark
 colorscheme solarized
 
 " ==========================================================
-set undodir="~/.vim/undo//"
-set undofile
+set noundofile
 set nobackup
 set noswapfile
 
@@ -112,51 +111,29 @@ nnoremap <silent> l :tabnext<CR>
 nnoremap <silent> j :bn<CR>
 nnoremap <silent> k :bp<CR>
 
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+    let &t_SR = "\<Esc>Ptmux;\<Esc>\e[3 q\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[1 q\<Esc>\\"
+else
+    let &t_SI = "\e[5 q"
+    let &t_SR = "\e[3 q"
+    let &t_EI = "\e[1 q"
+endif
+
 " splits
 nmap <leader>sl :rightbelow vnew<CR>
 nmap <leader>sj :rightbelow new<CR>
-
-" vimwiki settings
-let g:vimwiki_dir_link = 'main'
-let g:vimwiki_global_ext = 0
-
-let wiki_1 = {}
-let wiki_1.path = '~/Dropbox/wiki/vimwiki/'
-let wiki_1.path_html = '~/Dropbox/wiki/vimwiki/html'
-let wiki_1.template_path = '~/Dropbox/wiki/vimwiki/templates/html'
-let wiki_1.template_default = 'def_template'
-let wiki_1.template_ext = '.html'
-let wiki_1.auto_export = 1
-let wiki_1.index = 'index'
-
-let g:vimwiki_list = [wiki_1]
-
-au FileType vimwiki nmap <silent><buffer> <leader>wj <Plug>VimwikiSplitLink
-au FileType vimwiki nmap <silent><buffer> <leader>wl <Plug>VimwikiVSplitLink
 
 "Syntax highlighting under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-"Align GFM tables
-au FileType markdown vmap <leader><bslash> :EasyAlign*<BAR><CR>
 
 au FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
-"augroup pencil
-"    autocmd!
-"    autocmd FileType markdown,mkd call pencil#init()
-"    autocmd FileType text         call pencil#init()
-"augroup END
-
-" Color for limelight background dimming
-let g:limelight_conceal_ctermfg = '240'
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-nmap <leader>gg :Goyo<CR>
 
 nmap <silent> <leader>bd :bp\|bd #<CR>
 
