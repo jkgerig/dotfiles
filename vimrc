@@ -24,7 +24,10 @@ syntax enable
 
 set background=dark
 
+let g:solarized_bold=0
 colorscheme solarized
+
+set t_md=
 
 " ==========================================================
 set noundofile
