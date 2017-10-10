@@ -2,39 +2,73 @@
 " vimrc
 "
 
-" Use Vim instead of Vi settings
-set nocompatible
+" ---------------------------------------------------------------------------
+" CONTENTS
+" ---------------------------------------------------------------------------
+"  1.   Vim Compatability Settings
+"  2.   Vim-Plug Config
+"  3.   General Configuration
+"  4.   Filetype Specific
+"  5.   Custom Functions
+"  6.   Plugin Settings
+" ---------------------------------------------------------------------------
 
-execute pathogen#infect()
-call pathogen#helptags()
 
-" always set autoindenting on
-set ai
+" +=========================================================================+
+" | 1. VIM COMPATABILITY SETTINGS                                           |
+" +=========================================================================+
 
-" Enable file type detection and do language-dependent indenting.
-filetype plugin indent on
+set nocompatible                    " VIM instead of vi settings
+set backspace=indent,eol,start      " Make backspace delete over anything
 
-" Make backspace delete over anything
-set backspace=indent,eol,start
 
-" Color settings
-" ==========================================================
+" +=========================================================================+
+" | 2. VIM-PLUG CONFIG                                                      |
+" +=========================================================================+
 
-syntax enable
+" Specify directory for plugins
+call plug#begin('~/.vim/plugged')
 
+" Github Plugins
+" ==========================================================================
+
+" Solarized
+Plug 'altercation/vim-colors-solarized'
+
+" Vim Tmux Navigator
+Plug 'christoomey/vim-tmux-navigator'
+
+" Tabular
+Plug 'godlygeek/tabular'
+
+" Vim Markdown
+Plug 'gabrielelana/vim-markdown'
+
+" Initialize plugin system
+call plug#end()
+
+
+" +=========================================================================+
+" | 3. GENERAL CONFIGURATION                                                |
+" +=========================================================================+
+
+" Colors
+" ==========================================================================
+colorscheme solarized               " Solarized colorscheme
+let g:solarized_bold=0
+call togglebg#map("<F5>")
 set background=dark
 
-let g:solarized_bold=0
-colorscheme solarized
+set t_md=                           " NO bold font
 
-set t_md=
-
-" ==========================================================
+" File Management
+" ==========================================================================
 set noundofile
 set nobackup
 set noswapfile
 
-" tabs
+" Tabs
+" ==========================================================================
 set autoindent
 set smartindent
 set smarttab
@@ -44,10 +78,10 @@ set expandtab
 set tabstop=4
 set shiftround
 
-" general display settings
+" General Display
+" ==========================================================================
 set number
 set relativenumber
-nnoremap <leader><space> :noh<cr>
 set ruler
 set cmdheight=2
 set hlsearch
@@ -61,11 +95,48 @@ set ignorecase
 set smartcase
 set splitbelow
 set splitright
+set linebreak
 
-" Toggle background (solarized colorscheme)
-call togglebg#map("<F5>")
+" Keymappings
+" ==========================================================================
+nmap <leader><Tab> :set expandtab!<CR>:set expandtab?<CR>
+nmap <leader>v :tabedit $MYVIMRC<CR>
+nmap <leader>l :set list!<CR>
+nmap <leader>b :buffers<CR>:buffer<Space>
+nmap <leader>t :tabnew<CR>
+nmap <silent> <leader>bd :bp\|bd #<CR>
+nnoremap <leader><space> :noh<cr>
+
+nnoremap <silent> h :tabprevious<CR>
+nnoremap <silent> l :tabnext<CR>
+nnoremap <silent> j :bn<CR>
+nnoremap <silent> k :bp<CR>
+
+nmap <leader>sl :rightbelow vnew<CR>
+nmap <leader>sj :rightbelow new<CR>
+
+set timeout timeoutlen=1500 ttimeoutlen=100
+
+
+" +=========================================================================+
+" | 4. FILETYPE SPECIFIC                                                    |
+" +=========================================================================+
+
+" HTML
+" ==========================================================================
+au FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+" CSS
+" ==========================================================================
+au FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+
+" +=========================================================================+
+" | 5. CUSTOM FUNCTIONS                                                     |
+" +=========================================================================+
 
 " Keep tabs consistent. See: http://vimcasts.org/episodes/tabs-and-spaces/
+" ==========================================================================
 command! -nargs=* Stab call Stab()
 function! Stab()
     let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
@@ -93,26 +164,27 @@ function! SummarizeTabs()
     endtry
 endfunction
 
-nmap <leader><Tab> :set expandtab!<CR>:set expandtab?<CR>
-nmap <leader>v :tabedit $MYVIMRC<CR>
-nmap <leader>l :set list!<CR>
-nmap <leader>b :buffers<CR>:buffer<Space>
-nmap <leader>t :tabnew<CR>
+" Syntax highlighting under cursor
+" ==========================================================================
+map <F10> :echo "hi<"
+            \ . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
+            \ . ">"<CR>
 
-set timeout timeoutlen=1500 ttimeoutlen=100
 
-" vim-tmux-navigator settings
+" +=========================================================================+
+" | 6. PLUGIN SETTINGS                                                      |
+" +=========================================================================+
+
+" vim-tmux-navigator
+" ==========================================================================
 let g:tmux_navigator_no_mappings = 1
 
 nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <C-j> :TmuxNavigateDown<CR>
 nnoremap <silent> <C-k> :TmuxNavigateUp<CR>
 nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
-
-nnoremap <silent> h :tabprevious<CR>
-nnoremap <silent> l :tabnext<CR>
-nnoremap <silent> j :bn<CR>
-nnoremap <silent> k :bp<CR>
 
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
@@ -124,26 +196,3 @@ else
     let &t_EI = "\e[1 q"
 endif
 
-" splits
-nmap <leader>sl :rightbelow vnew<CR>
-nmap <leader>sj :rightbelow new<CR>
-
-"Syntax highlighting under cursor
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-
-au FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-au FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
-
-
-nmap <silent> <leader>bd :bp\|bd #<CR>
-
-" Experiment w/linebreak
-set linebreak
-
-" Source local config
-if filereadable(expand($HOME) . "/.vimrc.local")
-    source $HOME/.vimrc.local
-endif
