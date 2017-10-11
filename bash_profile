@@ -1,6 +1,6 @@
 # bash_profile
 
-# Set PATH to include private bin if it exists
+# Set PATH to include private bin(s) if it (they) exist(s)
 if [ -d "${HOME}/bin" ] ; then
   PATH="${HOME}/bin:${PATH}"
 fi
@@ -9,10 +9,11 @@ if [ -d "${HOME}/.bin" ] ; then
     PATH="${HOME}/.bin:$PATH"
 fi
 
-# source local file if it exists
-if [ -r "${HOME}/.bash_profile.local" ] ; then
-    . "${HOME}/.bash_profile.local"
+if [ -d "${HOME}/.local/bin" ] ; then
+    PATH="${HOME}/.local/bin:$PATH"
 fi
 
 # source bashrc
+# should I be using "source" or "." here?
 source "${HOME}/.bashrc"
+

@@ -23,19 +23,25 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# start tmux
+if which tmux >/dev/null 2>&1; then
+    # if not inside a tmux session, and if no session is started, start a new session
+    test -z "$TMUX" && (tmux attach || tmux new-session)
+fi
+
 # Source additional files
 # ======================================================================= #
 
 # ~/.bash_aliases file
-if [ -f ~/.bash_aliases ]; then
+if [ -f ~/.bash_aliases ] ; then
     . ~/.bash_aliases
 fi
 
 # bash-completion
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
+if ! shopt -oq posix ; then
+  if [ -f /usr/share/bash-completion/bash_completion ] ; then
     . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
+  elif [ -f /etc/bash_completion ] ; then
     . /etc/bash_completion
   fi
 fi
@@ -47,7 +53,7 @@ case "$TERM" in
     xterm-color|*-256color) color_term=yes;;
 esac
 
-if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null ; then
 	# We have color support
 	color_term=yes
     else
@@ -58,7 +64,7 @@ fi
 # ======================================================================= #
 
 # enable color support of ls
-if [[ "$color_term" = yes && -x /usr/bin/dircolors ]]; then
+if [[ "$color_term" = yes && -x /usr/bin/dircolors ]] ; then
     eval `dircolors -b ~/.dircolors`
 fi
 
@@ -159,7 +165,8 @@ reptar() {
 # git-aware prompt
 source ~/.git-prompt.sh
 
-PROMPT_COMMAND='__git_ps1 "arg1" "arg2"'
+PROMPT_COMMAND='__git_ps1 "arg1" "arg2" ; \
+    echo -ne "\033]0;${USER}@${HOSTNAME}: $(basename ${PWD})\007"'
 
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
@@ -184,12 +191,11 @@ if [ -n "$PATH" ]; then
     unset old_PATH x
 fi
 
-#if which tmux >/dev/null 2>&1; then
-#    #if not inside a tmux session, and if no session is started, start a new session
-#    test -z "$TMUX" && (tmux attach || tmux new-session)
-#fi
-
 # source local file, if it exists
 if [ -r "${HOME}/.bashrc.local" ] ; then
     . "${HOME}/.bashrc.local"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
