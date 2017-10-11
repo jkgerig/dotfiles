@@ -59,7 +59,6 @@ call plug#end()
 " Colors
 " ==========================================================================
 set termguicolors
-let g:neosolarized_bold=0
 set background=dark
 colorscheme NeoSolarized            " NeoSolarized colorscheme
 
@@ -130,10 +129,10 @@ nmap <leader>t :tabnew<CR>
 nmap <silent> <leader>bd :bp\|bd #<CR>
 nnoremap <leader><space> :noh<cr>
 
-nnoremap <silent> h :tabprevious<CR>
-nnoremap <silent> l :tabnext<CR>
-nnoremap <silent> j :bn<CR>
-nnoremap <silent> k :bp<CR>
+nnoremap <silent> <M-h> :tabprevious<CR>
+nnoremap <silent> <M-l> :tabnext<CR>
+nnoremap <silent> <M-j> :bn<CR>
+nnoremap <silent> <M-k> :bp<CR>
 
 nmap <leader>sl :rightbelow vnew<CR>
 nmap <leader>sj :rightbelow new<CR>
