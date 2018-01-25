@@ -8,6 +8,9 @@
 # Basic settings:
 # ======================================================================= #
 
+# needed on chromebook (maybe?)
+export TERM=xterm-256color
+
 # set default editor
 export EDITOR=vim
 
@@ -23,7 +26,13 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# start tmux
+# start tmux, unless not desired
+#echo "Opening tmux in 5 seconds."
+#if read -r -s -n 1 -t 5 -p "Press any key to cancel..." key; then
+#    echo "not starting tmux..."
+#else
+#    echo "starting tmux..."
+#fi
 if which tmux >/dev/null 2>&1; then
     # if not inside a tmux session, and if no session is started, start a new session
     test -z "$TMUX" && (tmux attach || tmux new-session)
@@ -152,28 +161,31 @@ reptar() {
     echo "  -z  --gzip"
 }
 
-# Custom Prompt
-# ======================================================================= #
+# shell prompt
+#PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w \$ "
 
-# custom prompt and color
-#if [ "$color_term" = yes ]; then
-#    PS1="\n\[${Green}\]\u \[${Blue}\]\w \[${Color_Reset}\]\n\$ "
-#else
-#    PS1='\n\u \w\n\$ '
-#fi
+#black   '\[\e[30m\]'
+#red     '\[\e[31m\]'
+#green   '\[\e[32m\]'
+#yellow  '\[\e[33m\]'
+#blue    '\[\e[34m\]'
+#magenta '\[\e[35m\]'
+#cyan    '\[\e[36m\]'
+#white   '\[\e[37m\]'
+#reset   '\[\e[0m\]'
 
-# git-aware prompt
 source ~/.git-prompt.sh
 
-PROMPT_COMMAND='__git_ps1 "arg1" "arg2" ; \
-    echo -ne "\033]0;${USER}@${HOSTNAME}: $(basename ${PWD})\007"'
+PROMPT_COMMAND='__git_ps1 "\[\e[34m\]\u\[\e[0m\]@\[\e[33m\]\h\[\e[0m\]:\w" "\\\$ "'
 
 GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=1
-
+ 
+# Use `printf '\033[1 q'` to set blinking, block cursor
+printf '\033[1 q'
+ 
 # remove duplicate entries from PATH
 # as seen in: https://unix.stackexchange.com/questions/40749/remote-duplicate-path-entries-with-awk-command
 
@@ -191,11 +203,3 @@ if [ -n "$PATH" ]; then
     unset old_PATH x
 fi
 
-# source local file, if it exists
-if [ -r "${HOME}/.bashrc.local" ] ; then
-    . "${HOME}/.bashrc.local"
-fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

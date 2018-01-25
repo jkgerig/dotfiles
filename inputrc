@@ -55,4 +55,3 @@ TAB: menu-complete
 #menu-complete-backward ()
 "\e[Z": menu-complete-backward
 
-$include ~/.inputrc.local

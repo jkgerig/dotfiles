@@ -82,6 +82,7 @@
 #     contains      relative to newer annotated tag (v1.6.3.2~35)
 #     branch        relative to newer tag or branch (master~4)
 #     describe      relative to older annotated tag (v1.6.3.1-13-gdd42c2f)
+#     tag           relative to any older tag (v1.6.3.1-13-gdd42c2f)
 #     default       exactly matching tag
 #
 # If you would like a colored hint about the current dirty state, set
@@ -244,10 +245,9 @@ __git_ps1_colorize_gitstring ()
 	else
 		# Using \[ and \] around colors is necessary to prevent
 		# issues with command line editing/browsing/completion!
-        # modified for solarized color palette
 		local c_red='\[\e[31m\]'
 		local c_green='\[\e[32m\]'
-		local c_lblue='\[\e[34m\]'
+		local c_lblue='\[\e[1;34m\]'
 		local c_clear='\[\e[0m\]'
 	fi
 	local bad_color=$c_red
@@ -278,11 +278,12 @@ __git_ps1_colorize_gitstring ()
 	r="$c_clear$r"
 }
 
+# Helper function to read the first line of a file into a variable.
+# __git_eread requires 2 arguments, the file path and the name of the
+# variable, in that order.
 __git_eread ()
 {
-	local f="$1"
-	shift
-	test -r "$f" && read "$@" <"$f"
+	test -r "$1" && IFS=$'\r\n' read "$2" <"$1"
 }
 
 # __git_ps1 accepts 0 or 1 arguments (i.e., format string)
@@ -298,28 +299,18 @@ __git_eread ()
 # In this mode you can request colored hints using GIT_PS1_SHOWCOLORHINTS=true
 __git_ps1 ()
 {
-    # local color variables
-    local c_red='\[\e[31m\]'
-    local c_green='\[\e[32m\]'
-    local c_yellow='\[\e[33m\]'
-    local c_blue='\[\e[34m\]'
-    local c_magenta='\[\e[35m\]'
-    local c_cyan='\[\e[36m\]'
-    local c_white='\[\e[37m\]'
-    local c_clear='\[\e[0m\]'
-
 	# preserve exit status
 	local exit=$?
 	local pcmode=no
 	local detached=no
-	local ps1pc_start="${c_green}\u${c_clear}@${c_yellow}\h${c_clear}:${c_blue}\w${c_clear} "
-	local ps1pc_end="\n\$ "
+	local ps1pc_start='\u@\h:\w '
+	local ps1pc_end='\$ '
 	local printf_format=' (%s)'
 
 	case "$#" in
 		2|3)	pcmode=yes
-			ps1pc_start="${c_green}\u${c_clear}@${c_yellow}\h${c_clear}:${c_blue}\w${c_clear}"
-			ps1pc_end="\n\$ "
+			ps1pc_start="$1"
+			ps1pc_end="$2"
 			printf_format="${3:-$printf_format}"
 			# set PS1 to a plain prompt so that we can
 			# simply return early if the prompt should not
@@ -366,8 +357,8 @@ __git_ps1 ()
 	# incorrect.)
 	#
 	local ps1_expanded=yes
-	[ -z "$ZSH_VERSION" ] || [[ -o PROMPT_SUBST ]] || ps1_expanded=no
-	[ -z "$BASH_VERSION" ] || shopt -q promptvars || ps1_expanded=no
+	[ -z "${ZSH_VERSION-}" ] || [[ -o PROMPT_SUBST ]] || ps1_expanded=no
+	[ -z "${BASH_VERSION-}" ] || shopt -q promptvars || ps1_expanded=no
 
 	local repo_info rev_parse_exit_code
 	repo_info="$(git rev-parse --git-dir --is-inside-git-dir \
@@ -379,7 +370,7 @@ __git_ps1 ()
 		return $exit
 	fi
 
-	local short_sha
+	local short_sha=""
 	if [ "$rev_parse_exit_code" = "0" ]; then
 		short_sha="${repo_info##*$'\n'}"
 		repo_info="${repo_info%$'\n'*}"
@@ -454,6 +445,8 @@ __git_ps1 ()
 					git describe --contains HEAD ;;
 				(branch)
 					git describe --contains --all HEAD ;;
+				(tag)
+					git describe --tags HEAD ;;
 				(describe)
 					git describe HEAD ;;
 				(* | default)

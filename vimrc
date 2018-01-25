@@ -26,6 +26,13 @@ set backspace=indent,eol,start      " Make backspace delete over anything
 " | 2. VIM-PLUG CONFIG                                                      |
 " +=========================================================================+
 
+" Automatic install of vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Specify directory for plugins
 call plug#begin('~/.vim/plugged')
 
@@ -44,6 +51,9 @@ Plug 'godlygeek/tabular'
 " Vim Markdown
 Plug 'gabrielelana/vim-markdown'
 
+" Thesaurus
+Plug 'beloglazov/vim-online-thesaurus'
+
 " Initialize plugin system
 call plug#end()
 
@@ -60,6 +70,7 @@ call togglebg#map("<F5>")
 set background=dark
 
 set t_md=                           " NO bold font
+set t_Co=16
 
 " File Management
 " ==========================================================================
@@ -106,6 +117,8 @@ nmap <leader>b :buffers<CR>:buffer<Space>
 nmap <leader>t :tabnew<CR>
 nmap <silent> <leader>bd :bp\|bd #<CR>
 nnoremap <leader><space> :noh<cr>
+nmap <leader>w :w<CR>
+nmap <leader>q :q<CR>
 
 nnoremap <silent> h :tabprevious<CR>
 nnoremap <silent> l :tabnext<CR>
@@ -188,11 +201,20 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
 
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
-    let &t_SR = "\<Esc>Ptmux;\<Esc>\e[3 q\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[1 q\<Esc>\\"
+    let &t_SR = "\<Esc>Ptmux;\<Esc>\e[1 q\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
 else
     let &t_SI = "\e[5 q"
-    let &t_SR = "\e[3 q"
-    let &t_EI = "\e[1 q"
+    let &t_SR = "\e[1 q"
+    let &t_EI = "\e[2 q"
 endif
+
+" gabrielelana/vim-markdown 
+" ==========================================================================
+let g:markdown_enable_conceal = 1
+
+" beloglazov/vim-online-thesaurus
+" ==========================================================================
+let g:online_thesaurus_map_keys = 0
+nnoremap <leader>k :OnlineThesaurusCurrentWord<CR>
 

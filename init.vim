@@ -27,6 +27,13 @@
 " | 2. VIM-PLUG CONFIG                                                      |
 " +=========================================================================+
 
+" Automatic install of vim-plug
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Specify directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -47,6 +54,9 @@ Plug 'godlygeek/tabular'
 
 " Vim Markdown
 Plug 'gabrielelana/vim-markdown'
+
+" Thesaurus
+Plug 'beloglazov/vim-online-thesaurus'
 
 " Initialize plugin system
 call plug#end()
@@ -117,7 +127,9 @@ set linebreak
 "
 " group-name    highlight group name that sets color
 
-set guicursor=n-v:block,i:ver25,r:hor20,a:blinkwait700-blinkoff400-blinkon250
+set guicursor=n-v-sm:block-blinkon0
+set guicursor+=i-ci:ver25-blinkwait400-blinkoff600-blinkon600
+set guicursor+=r-cr-o-c:block-blinkwait400-blinkoff600-blinkon600
 
 " Keymappings
 " ==========================================================================
@@ -128,6 +140,8 @@ nmap <leader>b :buffers<CR>:buffer<Space>
 nmap <leader>t :tabnew<CR>
 nmap <silent> <leader>bd :bp\|bd #<CR>
 nnoremap <leader><space> :noh<cr>
+nmap <leader>w :w<CR>
+nmap <leader>q :q<CR>
 
 nnoremap <silent> <M-h> :tabprevious<CR>
 nnoremap <silent> <M-l> :tabnext<CR>
@@ -207,4 +221,18 @@ nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <C-j> :TmuxNavigateDown<CR>
 nnoremap <silent> <C-k> :TmuxNavigateUp<CR>
 nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
+
+" gabrielelana/vim-markdown 
+" ==========================================================================
+let g:markdown_enable_conceal = 1
+
+" beloglazov/vim-online-thesaurus
+" ==========================================================================
+let g:online_thesaurus_map_keys = 0
+nnoremap <leader>k :OnlineThesaurusCurrentWord<CR>
+
+augroup init
+    autocmd!
+    au VimLeave * set guicursor=a:block-blinkwait400-blinkoff600-blinkon600
+augroup END
 
