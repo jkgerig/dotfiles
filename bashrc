@@ -174,9 +174,35 @@ reptar() {
 #white   '\[\e[37m\]'
 #reset   '\[\e[0m\]'
 
+# Colors (including extra \[ and \] to surround non-printed codes in PS1
+     BLACK="\[\033[0;30m\]"
+       RED="\[\033[0;31m\]"
+     GREEN="\[\033[0;32m\]"
+    YELLOW="\[\033[0;33m\]"
+      BLUE="\[\033[0;34m\]"
+   MAGENTA="\[\033[0;35m\]"
+      CYAN="\[\033[0;36m\]"
+     WHITE="\[\033[0;37m\]"
+COLOR_NONE="\[\033[0m\]"
+
+
+# I'll handle the VIRTUAL_ENV prompt on my own thank you very much
+VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# Determine active Python virtualenv details.
+function set_virtualenv {
+    if test -z "$VIRTUAL_ENV" ; then
+        #PYTHON_VIRTUALENV=":"
+        echo ":"
+    else
+        #PYTHON_VIRTUALENV=" ${MAGENTA}{`basename \"$VIRTUAL_ENV\"`}${COLOR_NONE} "
+        echo -e " \033[0;35m{`basename \"$VIRTUAL_ENV\"`}\033[0m "
+    fi
+}
+
 source ~/.git-prompt.sh
 
-PROMPT_COMMAND='__git_ps1 "\[\e[34m\]\u\[\e[0m\]@\[\e[33m\]\h\[\e[0m\]:\w" "\\\$ "'
+PROMPT_COMMAND='__git_ps1 "${BLUE}\u${COLOR_NONE}@${YELLOW}\h${COLOR_NONE}\`set_virtualenv\`${CYAN}\w${COLOR_NONE} " "\\\$ "'
 
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
