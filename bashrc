@@ -26,18 +26,6 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# start tmux, unless not desired
-#echo "Opening tmux in 5 seconds."
-#if read -r -s -n 1 -t 5 -p "Press any key to cancel..." key; then
-#    echo "not starting tmux..."
-#else
-#    echo "starting tmux..."
-#fi
-if which tmux >/dev/null 2>&1; then
-    # if not inside a tmux session, and if no session is started, start a new session
-    test -z "$TMUX" && (tmux attach || tmux new-session)
-fi
-
 # Source additional files
 # ======================================================================= #
 
@@ -232,4 +220,20 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# start tmux, unless not installed, not desired, or already running
+if which tmux >/dev/null 2>&1; then
+    if [ -z $TMUX ]; then
+        echo "Opening tmux in 5 seconds."
+        if read -r -s -n 1 -t 5 -p "Press any key to cancel..." key; then
+            echo "not starting tmux..."
+        else
+            # start tmux
+            echo ""
+            echo "starting tmux..."
+            sleep 2
+            exec tmux
+        fi
+    fi
+fi
 
