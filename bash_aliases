@@ -19,3 +19,5 @@ alias rm='rm -Iv --one-file-system --preserve-root'
 # and case-insensitive searches
 alias less='less -Mi'
 
+# make tmux use unicode
+alias tmux='tmux -u'
