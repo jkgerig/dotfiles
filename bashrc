@@ -224,14 +224,14 @@ export NVM_DIR="$HOME/.nvm"
 # start tmux, unless not installed, not desired, or already running
 if which tmux >/dev/null 2>&1; then
     if [ -z $TMUX ]; then
-        echo "Opening tmux in 5 seconds."
-        if read -r -s -n 1 -t 5 -p "Press any key to cancel..." key; then
+        echo "Opening tmux in 3 seconds."
+        if read -r -s -n 1 -t 3 -p "Press any key to cancel..." key; then
             echo "not starting tmux..."
         else
             # start tmux
             echo ""
             echo "starting tmux..."
-            sleep 2
+            sleep 1
             exec tmux
         fi
     fi
