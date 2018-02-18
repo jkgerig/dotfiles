@@ -8,9 +8,6 @@
 # Basic settings:
 # ======================================================================= #
 
-# needed on chromebook (maybe?)
-export TERM=xterm-256color
-
 # set default editor
 export EDITOR=vim
 
@@ -198,23 +195,7 @@ if [ -n "$PATH" ]; then
     unset old_PATH x
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-# start tmux, unless not installed, not desired, or already running
-if which tmux >/dev/null 2>&1; then
-    if [ -z $TMUX ]; then
-        echo "Opening tmux in 3 seconds."
-        if read -r -s -n 1 -t 3 -p "Press any key to cancel..." key; then
-            echo "not starting tmux..."
-        else
-            # start tmux
-            echo ""
-            echo "starting tmux..."
-            sleep 1
-            exec tmux
-        fi
-    fi
+if [ -r ~/.bashrc.local ]; then
+    source ~/.bashrc.local
 fi
 
