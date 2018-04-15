@@ -50,10 +50,10 @@ Plug 'iCyMind/NeoSolarized'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Tabular
-Plug 'godlygeek/tabular'
+"Plug 'godlygeek/tabular'
 
 " Vim Markdown
-Plug 'gabrielelana/vim-markdown'
+"Plug 'gabrielelana/vim-markdown'
 
 " Thesaurus
 Plug 'beloglazov/vim-online-thesaurus'
