@@ -13,7 +13,9 @@ if [ -d "${HOME}/.local/bin" ] ; then
     PATH="${HOME}/.local/bin:$PATH"
 fi
 
-source "${HOME}/.bash_profile.local"
+if [ -r "${HOME}.bash_profile.local" ]; then
+    source "${HOME}/.bash_profile.local"
+fi
 
 # source bashrc
 # should I be using "source" or "." here?
