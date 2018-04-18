@@ -212,10 +212,15 @@ case $(id -u) in
 esac
 
 # Symbols
-prompt_symbol=">"
-prompt_clean_symbol=" "
-prompt_dirty_symbol="* "
-prompt_venv_symbol="% "
+#prompt_symbol=">"
+#prompt_symbol="»"
+#prompt_symbol="→"
+#prompt_symbol="⇒"
+#prompt_symbol="⇨"
+prompt_symbol="➜"
+prompt_clean_symbol="✓ "
+prompt_dirty_symbol="✕ "
+#prompt_venv_symbol="% "
 
 function prompt_command() {
 	# Local or SSH session?
@@ -247,9 +252,9 @@ function prompt_command() {
 	# Virtualenv
 	local venv_prompt=
 	if [ -n "$VIRTUAL_ENV" ]; then
-	    venv_prompt=" $BLUE$prompt_venv_symbol$(basename $VIRTUAL_ENV)$NOCOLOR"
+	    venv_prompt=" $MAGENTA{$(basename $VIRTUAL_ENV)}$NOCOLOR"
     elif [ -n "$CONDA_DEFAULT_ENV" ]; then
-        venv_prompt=" $BLUE$prompt_venv_symbol$CONDA_DEFAULT_ENV$NOCOLOR"
+        venv_prompt=" $MAGENTA{$CONDA_DEFAULT_ENV}$NOCOLOR"
 	fi
 
 	# Only show username if not default
