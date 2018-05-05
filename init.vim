@@ -69,7 +69,7 @@ call plug#end()
 " Colors
 " ==========================================================================
 set termguicolors
-set background=dark
+set background=light
 colorscheme NeoSolarized            " NeoSolarized colorscheme
 
 " File Management
