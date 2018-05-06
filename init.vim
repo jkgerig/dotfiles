@@ -224,7 +224,8 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
 
 " gabrielelana/vim-markdown 
 " ==========================================================================
-let g:markdown_enable_conceal = 1
+"let g:markdown_enable_conceal = 1
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql']
 
 " beloglazov/vim-online-thesaurus
 " ==========================================================================
