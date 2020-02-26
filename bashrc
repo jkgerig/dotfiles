@@ -3,7 +3,10 @@
 #
 
 # If not running interactively, don't do anything
-[[ "$-" != *i* ]] && return
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 # Basic settings:
 # ======================================================================= #
@@ -22,6 +25,9 @@ shopt -s histappend
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Source additional files
 # ======================================================================= #
@@ -199,4 +205,39 @@ if [ -r ~/.bashrc.local ]; then
     source ~/.bashrc.local
 fi
 
+# start tmux, unless not installed, not desired, or already running
+if which tmux >/dev/null 2>&1; then
+    if [ -z $TMUX ]; then
+        echo "Opening tmux in 3 seconds."
+        if read -r -s -n 1 -t 3 -p "Press any key to cancel..." key; then
+            echo "not starting tmux..."
+        else
+            # start tmux
+            echo ""
+            echo "starting tmux..."
+            sleep 1
+            ID="$( tmux ls | grep -vm1 attached | cut -d: -f1 )" # get the id of a deattached session
+            if [[ -z "$ID" ]] ;then # if not available create a new one
+                exec tmux new-session
+            else
+                exec tmux attach-session -t "$ID" # if available attach to it
+            fi
+        fi
+    fi
+fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/krisgerig/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/krisgerig/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/krisgerig/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/krisgerig/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

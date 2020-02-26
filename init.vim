@@ -53,7 +53,7 @@ Plug 'christoomey/vim-tmux-navigator'
 "Plug 'godlygeek/tabular'
 
 " Vim Markdown
-"Plug 'gabrielelana/vim-markdown'
+Plug 'gabrielelana/vim-markdown'
 
 " Thesaurus
 Plug 'beloglazov/vim-online-thesaurus'
@@ -69,7 +69,7 @@ call plug#end()
 " Colors
 " ==========================================================================
 set termguicolors
-set background=light
+set background=dark
 colorscheme NeoSolarized            " NeoSolarized colorscheme
 
 " File Management
@@ -225,7 +225,7 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
 " gabrielelana/vim-markdown 
 " ==========================================================================
 "let g:markdown_enable_conceal = 1
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql']
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql', 'c']
 
 " beloglazov/vim-online-thesaurus
 " ==========================================================================
