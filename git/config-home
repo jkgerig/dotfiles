@@ -1,0 +1,6 @@
+# config-home - Personal git identity
+# Note: No credential helper configured; uses system default (macOS Keychain, etc.)
+
+[user]
+	name = Kris Gerig
+	email = kris.gerig@gmail.com

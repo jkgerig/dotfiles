@@ -1,5 +1,6 @@
 # Local/machine-specific overrides
 local/
+git/config-profile
 local.lua
 local.zsh
 local.conf
@@ -23,3 +24,6 @@ nvim/lazy-lock.json
 
 # Reference install of LazyVim
 nvim-lazy/
+
+# nvim local overrides
+nvim/lua/local/
