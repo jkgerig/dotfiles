@@ -1,0 +1,23 @@
+[user]
+	name = Kris Gerig
+	email = kris@recidiviz.org
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	cb = "!git checkout -b $(git get-username)/$1 #"
+	c = "!git checkout $(git get-username)/$1 #"
+	get-username = !echo "url=$(git config --get remote.origin.url)" | git credential fill | grep 'username' | sed 's/username=//'
+	pushh = push -u origin HEAD
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	nc = !echo "$(git branch)" | git rev-list --count master..
+	rc = !"git for-each-ref --sort=-v:refname --format='%(refname:lstrip=3)' refs/remotes/origin/releases | head -n1"
+[pull]
+	ff = only
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
