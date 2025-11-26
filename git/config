@@ -22,7 +22,7 @@
 
 [credential]
 	helper =
-	helper = git-credential-manager
+	helper = /usr/local/bin/git-credential-manager
 
 [credential "https://dev.azure.com"]
 	useHttpPath = true
