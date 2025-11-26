@@ -1,12 +1,3 @@
-# Local/machine-specific overrides
-local/
-git/config-profile
-local.lua
-local.zsh
-local.conf
-*.local
-*.local.*
-
 # Never track secrets (shouldn't exist, but safety)
 *.pem
 *.key
@@ -24,6 +15,3 @@ nvim/lazy-lock.json
 
 # Reference install of LazyVim
 nvim-lazy/
-
-# nvim local overrides
-nvim/lua/local/

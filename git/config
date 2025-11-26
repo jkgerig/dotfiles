@@ -1,6 +1,6 @@
 [user]
 	name = Kris Gerig
-	# Identity set via config-profile symlink (based on DOTFILES_PROFILE)
+	email = kris@recidiviz.org
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -20,6 +20,9 @@
 [pull]
 	ff = only
 
-# Profile-based identity (symlink managed by dotfiles)
-[include]
-	path = config-profile
+[credential]
+	helper =
+	helper = /usr/local/share/gcm-core/git-credential-manager
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true

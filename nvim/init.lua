@@ -1017,12 +1017,5 @@ require('lazy').setup({
   },
 })
 
--- Profile-aware configuration
-local profile = os.getenv('DOTFILES_PROFILE') or 'home'
-pcall(require, 'config.' .. profile)
-
--- Local overrides (gitignored)
-pcall(require, 'local.init')
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

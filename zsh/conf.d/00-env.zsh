@@ -12,25 +12,19 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GOPATH="$XDG_DATA_HOME/go"
-[[ "$DOTFILES_PROFILE" == "work" ]] && export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 # Relocated tools
-# Work-only
-if [[ "$DOTFILES_PROFILE" == "work" ]]; then
-    export CLOUDSDK_CONFIG="$HOME/.gcloud"
-    export NVM_DIR="$HOME/.nvm"
-fi
+export CLOUDSDK_CONFIG="$HOME/.gcloud"
+export NVM_DIR="$HOME/.nvm"
 
 # Python
-# Work-only
-if [[ "$DOTFILES_PROFILE" == "work" ]]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export CLOUDSDK_PYTHON="$PYENV_ROOT/shims/python"
-    export PIPENV_VERBOSITY=-1
-fi
+export PYENV_ROOT="$HOME/.pyenv"
+export CLOUDSDK_PYTHON="$PYENV_ROOT/shims/python"
+export PIPENV_VERBOSITY=-1
 
-# Terraform (work-only)
-[[ "$DOTFILES_PROFILE" == "work" ]] && export TFENV_ROOT="$HOME/.tfenv"
+# Terraform
+export TFENV_ROOT="$HOME/.tfenv"
 
 # Editor
 export EDITOR=nvim

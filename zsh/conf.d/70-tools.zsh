@@ -1,10 +1,14 @@
 # 70-tools.zsh - Tool initializations
 
 # homebrew
-[[ "$DOTFILES_OS" == "macos" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# pyenv (work-only)
-[[ "$DOTFILES_PROFILE" == "work" ]] && eval "$(pyenv init - zsh)"
+# pyenv
+eval "$(pyenv init - zsh)"
+
+# nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # rust (uncomment if needed)
 # [[ -e "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
@@ -12,12 +16,9 @@
 # fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# Work-only
-if [[ "$DOTFILES_PROFILE" == "work" ]]; then
-    # gcloud
-    source ~/google-cloud-sdk/path.zsh.inc
-    source ~/google-cloud-sdk/completion.zsh.inc
-fi
+# gcloud
+source ~/google-cloud-sdk/path.zsh.inc
+source ~/google-cloud-sdk/completion.zsh.inc
 
 # zsh plugins
 source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

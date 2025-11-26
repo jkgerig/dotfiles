@@ -11,10 +11,7 @@ alias la='ls -al --color=auto'
 alias l='ls -ACF --color=auto'
 
 # repos
-# Work-only paths
-if [[ "$DOTFILES_PROFILE" == "work" ]]; then
-    alias rdata="cd $HOME/recidiviz/recidiviz-data"
-fi
+alias rdata="cd $HOME/recidiviz/recidiviz-data"
 
 alias pshell="pipenv shell"
 
