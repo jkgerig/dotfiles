@@ -1,7 +1,7 @@
 # 40-completions.zsh - Completion configuration
 
 # Add zsh-completions to fpath
-fpath=($HOME/.local/share/zsh/zsh-completions/src $fpath)
+[[ -d $HOME/.local/share/zsh/zsh-completions/src ]] && fpath=($HOME/.local/share/zsh/zsh-completions/src $fpath)
 
 # Load completions
 autoload -Uz compinit && compinit

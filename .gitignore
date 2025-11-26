@@ -12,6 +12,7 @@
 .DS_Store
 zsh/.zcompdump*
 nvim/lazy-lock.json
+.claude/
 
 # Reference install of LazyVim
 nvim-lazy/

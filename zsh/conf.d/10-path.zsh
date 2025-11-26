@@ -12,4 +12,7 @@ path=("/opt/homebrew/opt/postgresql@13/bin" $path)
 # local bin
 path+=("$HOME/.local/bin")
 
+# dotfiles bin
+path+=("$HOME/.config/bin")
+
 export PATH

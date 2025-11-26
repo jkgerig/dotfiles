@@ -1,0 +1,312 @@
+#!/usr/bin/env zsh
+# dotfiles-health - Check and optionally fix dotfiles dependencies
+
+set -euo pipefail
+
+# Colors
+autoload -U colors && colors
+
+readonly CHECK_MARK="✓"
+readonly CROSS_MARK="✗"
+readonly WARN_MARK="!"
+
+# Zsh plugin definitions: name|path|git_url
+typeset -a ZSH_PLUGINS=(
+    "zsh-autosuggestions|zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions.git"
+    "zsh-completions|zsh-completions|https://github.com/zsh-users/zsh-completions.git"
+    "fzf-tab|fzf-tab|https://github.com/Aloxaf/fzf-tab.git"
+    "zsh-syntax-highlighting|zsh-syntax-highlighting|https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    "catppuccin-zsh-syntax-highlighting|catppuccin-zsh-syntax-highlighting|https://github.com/catppuccin/zsh-syntax-highlighting.git"
+    "powerlevel10k|powerlevel10k|https://github.com/romkatv/powerlevel10k.git"
+)
+
+# Tmux plugin definitions: name|path|git_url
+typeset -a TMUX_PLUGINS=(
+    "catppuccin|catppuccin|https://github.com/catppuccin/tmux.git"
+)
+
+# Tool definitions: name|check_command
+typeset -a TOOLS=(
+    "homebrew|brew --version"
+    "git|git --version"
+    "fzf|fzf --version"
+    "pyenv|pyenv --version"
+    "nvm|[ -s \"\$NVM_DIR/nvm.sh\" ]"
+    "neovim|nvim --version"
+    "tmux|tmux -V"
+)
+
+# Optional tools (won't show as errors if missing)
+typeset -a OPTIONAL_TOOLS=(
+    "gcloud|gcloud --version"
+    "rust|rustc --version"
+    "go|go version"
+)
+
+ZSH_PLUGIN_DIR="$HOME/.local/share/zsh"
+TMUX_PLUGIN_DIR="$HOME/.local/share/tmux/plugins"
+FIX_MODE=false
+UPDATE_MODE=false
+VERBOSE=false
+HAD_ERRORS=false
+
+usage() {
+    cat <<EOF
+Usage: dotfiles-health [OPTIONS]
+
+Check the health of your dotfiles configuration.
+
+Options:
+    -f, --fix      Install missing plugins
+    -u, --update   Update all installed plugins (git pull)
+    -v, --verbose  Show more details
+    -h, --help     Show this help message
+EOF
+}
+
+log_ok() {
+    print -P "%F{green}${CHECK_MARK}%f $1"
+}
+
+log_warn() {
+    print -P "%F{yellow}${WARN_MARK}%f $1"
+}
+
+log_err() {
+    print -P "%F{red}${CROSS_MARK}%f $1"
+    HAD_ERRORS=true
+}
+
+log_info() {
+    [[ "$VERBOSE" == true ]] && print -P "  %F{8}$1%f"
+}
+
+update_plugin() {
+    local plugin_path="$1"
+    local name="$2"
+
+    if [[ -d "$plugin_path/.git" ]]; then
+        local before=$(git -C "$plugin_path" rev-parse --short HEAD 2>/dev/null)
+        if git -C "$plugin_path" pull --ff-only &>/dev/null; then
+            local after=$(git -C "$plugin_path" rev-parse --short HEAD 2>/dev/null)
+            if [[ "$before" == "$after" ]]; then
+                log_ok "$name (already up to date)"
+            else
+                log_ok "$name ($before → $after)"
+            fi
+        else
+            log_err "$name (update failed)"
+        fi
+    else
+        log_warn "$name (not a git repo)"
+    fi
+}
+
+check_zsh_plugins() {
+    print -P "\n%B%F{blue}Zsh Plugins%f%b ($ZSH_PLUGIN_DIR)"
+
+    for plugin_def in "${ZSH_PLUGINS[@]}"; do
+        local name="${plugin_def%%|*}"
+        local rest="${plugin_def#*|}"
+        local dir="${rest%%|*}"
+        local url="${rest#*|}"
+        local plugin_path="$ZSH_PLUGIN_DIR/$dir"
+
+        if [[ -d "$plugin_path" ]]; then
+            if [[ "$UPDATE_MODE" == true ]]; then
+                update_plugin "$plugin_path" "$name"
+            else
+                log_ok "$name"
+                log_info "$(git -C "$plugin_path" describe --tags 2>/dev/null || git -C "$plugin_path" rev-parse --short HEAD 2>/dev/null || echo "installed")"
+            fi
+        else
+            if [[ "$FIX_MODE" == true ]]; then
+                log_warn "$name (installing...)"
+                if git clone --depth 1 "$url" "$plugin_path" &>/dev/null; then
+                    log_ok "$name (installed)"
+                else
+                    log_err "$name (install failed)"
+                fi
+            else
+                log_err "$name (missing)"
+            fi
+        fi
+    done
+}
+
+check_tmux_plugins() {
+    print -P "\n%B%F{blue}Tmux Plugins%f%b ($TMUX_PLUGIN_DIR)"
+
+    for plugin_def in "${TMUX_PLUGINS[@]}"; do
+        local name="${plugin_def%%|*}"
+        local rest="${plugin_def#*|}"
+        local dir="${rest%%|*}"
+        local url="${rest#*|}"
+        local plugin_path="$TMUX_PLUGIN_DIR/$dir"
+
+        if [[ -d "$plugin_path" ]]; then
+            if [[ "$UPDATE_MODE" == true ]]; then
+                update_plugin "$plugin_path" "$name"
+            else
+                log_ok "$name"
+                log_info "$(git -C "$plugin_path" describe --tags 2>/dev/null || git -C "$plugin_path" rev-parse --short HEAD 2>/dev/null || echo "installed")"
+            fi
+        else
+            if [[ "$FIX_MODE" == true ]]; then
+                log_warn "$name (installing...)"
+                mkdir -p "$TMUX_PLUGIN_DIR"
+                if git clone --depth 1 "$url" "$plugin_path" &>/dev/null; then
+                    log_ok "$name (installed)"
+                else
+                    log_err "$name (install failed)"
+                fi
+            else
+                log_err "$name (missing)"
+            fi
+        fi
+    done
+}
+
+check_tools() {
+    print -P "\n%B%F{blue}Required Tools%f%b"
+
+    for tool_def in "${TOOLS[@]}"; do
+        local name="${tool_def%%|*}"
+        local check_cmd="${tool_def#*|}"
+
+        if eval "$check_cmd" &>/dev/null; then
+            log_ok "$name"
+        else
+            log_err "$name (not found)"
+        fi
+    done
+}
+
+check_optional_tools() {
+    print -P "\n%B%F{blue}Optional Tools%f%b"
+
+    for tool_def in "${OPTIONAL_TOOLS[@]}"; do
+        local name="${tool_def%%|*}"
+        local check_cmd="${tool_def#*|}"
+
+        if eval "$check_cmd" &>/dev/null; then
+            log_ok "$name"
+        else
+            log_warn "$name (not installed)"
+        fi
+    done
+}
+
+check_config_files() {
+    print -P "\n%B%F{blue}Config Files%f%b"
+
+    local configs=(
+        "$HOME/.zshenv|zshenv"
+        "$HOME/.config/zsh/.zshrc|zshrc"
+        "$HOME/.config/zsh/.p10k.zsh|p10k config"
+        "$HOME/.config/git/config|git config"
+        "$HOME/.config/tmux/tmux.conf|tmux config"
+        "$HOME/.config/nvim/init.lua|neovim config"
+    )
+
+    for config_def in "${configs[@]}"; do
+        local cfg_path="${config_def%%|*}"
+        local name="${config_def#*|}"
+
+        if [[ -f "$cfg_path" ]]; then
+            log_ok "$name"
+        else
+            log_err "$name ($cfg_path)"
+        fi
+    done
+}
+
+check_directories() {
+    print -P "\n%B%F{blue}Directories%f%b"
+
+    local dirs=(
+        "$HOME/.local/bin|~/.local/bin"
+        "$HOME/.local/share|~/.local/share"
+        "$HOME/.config|~/.config"
+        "$ZSH_PLUGIN_DIR|zsh plugins dir"
+        "$TMUX_PLUGIN_DIR|tmux plugins dir"
+    )
+
+    for dir_def in "${dirs[@]}"; do
+        local dir_path="${dir_def%%|*}"
+        local name="${dir_def#*|}"
+
+        if [[ -d "$dir_path" ]]; then
+            log_ok "$name"
+        else
+            if [[ "$FIX_MODE" == true ]]; then
+                mkdir -p "$dir_path"
+                log_ok "$name (created)"
+            else
+                log_err "$name ($dir_path)"
+            fi
+        fi
+    done
+}
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -f|--fix)
+            FIX_MODE=true
+            shift
+            ;;
+        -u|--update)
+            UPDATE_MODE=true
+            shift
+            ;;
+        -v|--verbose)
+            VERBOSE=true
+            shift
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+# Run checks
+if [[ "$UPDATE_MODE" == true ]]; then
+    print -P "%B%F{magenta}Updating Plugins%f%b"
+    print -P "%F{8}─────────────────────%f"
+    check_zsh_plugins
+    check_tmux_plugins
+else
+    print -P "%B%F{magenta}Dotfiles Health Check%f%b"
+    print -P "%F{8}─────────────────────%f"
+    check_directories
+    check_config_files
+    check_tools
+    check_optional_tools
+    check_zsh_plugins
+    check_tmux_plugins
+fi
+
+# Summary
+print -P "\n%F{8}─────────────────────%f"
+if [[ "$HAD_ERRORS" == true ]]; then
+    if [[ "$UPDATE_MODE" == true ]]; then
+        print -P "%F{red}Some updates failed.%f"
+    else
+        print -P "%F{red}Some checks failed.%f Run with %F{cyan}--fix%f to install missing plugins."
+    fi
+    exit 1
+else
+    if [[ "$UPDATE_MODE" == true ]]; then
+        print -P "%F{green}All plugins updated!%f"
+    else
+        print -P "%F{green}All checks passed!%f"
+    fi
+    exit 0
+fi

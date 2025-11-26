@@ -1,7 +1,9 @@
 # 60-colors.zsh - Catppuccin Mocha theme colors
 
 # zsh-syntax-highlighting catppuccin theme (must be sourced BEFORE the plugin)
-source ~/.config/zsh/colorschemes/catppuccin-mocha.zsh
+# Installed via: git clone https://github.com/catppuccin/zsh-syntax-highlighting.git ~/.local/share/zsh/catppuccin-zsh-syntax-highlighting
+[[ -f ~/.local/share/zsh/catppuccin-zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh ]] \
+    && source ~/.local/share/zsh/catppuccin-zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 # fzf catppuccin mocha colors
 export FZF_DEFAULT_OPTS=" \
