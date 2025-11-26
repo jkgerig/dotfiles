@@ -20,7 +20,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
-export CLOUDSDK_PYTHON="$PYENV_ROOT/shims/python"
+[[ -x "$PYENV_ROOT/shims/python" ]] && export CLOUDSDK_PYTHON="$PYENV_ROOT/shims/python"
 export PIPENV_VERBOSITY=-1
 
 # Terraform

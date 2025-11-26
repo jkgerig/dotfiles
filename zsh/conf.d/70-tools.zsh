@@ -14,11 +14,11 @@ eval "$(pyenv init - zsh)"
 # [[ -e "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 # fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+(( $+commands[fzf] )) && source <(fzf --zsh)
 
 # gcloud
-source ~/google-cloud-sdk/path.zsh.inc
-source ~/google-cloud-sdk/completion.zsh.inc
+[[ -f ~/google-cloud-sdk/path.zsh.inc ]] && source ~/google-cloud-sdk/path.zsh.inc
+[[ -f ~/google-cloud-sdk/completion.zsh.inc ]] && source ~/google-cloud-sdk/completion.zsh.inc
 
 # zsh plugins
 source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

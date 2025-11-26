@@ -6,8 +6,8 @@
 # tfenv
 path=("$TFENV_ROOT/bin" $path)
 
-# postgresql (macOS only)
-[[ "$DOTFILES_OS" == "macos" ]] && path=("/opt/homebrew/opt/postgresql@13/bin" $path)
+# postgresql
+path=("/opt/homebrew/opt/postgresql@13/bin" $path)
 
 # local bin
 path+=("$HOME/.local/bin")
