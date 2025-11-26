@@ -11,6 +11,7 @@
 **/*.log
 .DS_Store
 zsh/.zcompdump*
+zsh/.zsh_sessions
 nvim/lazy-lock.json
 .claude/
 

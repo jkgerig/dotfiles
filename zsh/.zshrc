@@ -21,3 +21,17 @@ done
 #######################################################################################################################
 
 bindkey -e
+
+#######################################################################################################################
+# Auto-start tmux
+#######################################################################################################################
+
+# Skip tmux if:
+#   - NOTMUX=1 is set (escape hatch)
+#   - Already inside tmux
+#   - Not an interactive shell
+#   - Inside VS Code integrated terminal
+#   - Running in a script/non-terminal context
+if [[ -z "$NOTMUX" && -z "$TMUX" && $- == *i* && -z "$VSCODE_TERMINAL" && -t 0 ]]; then
+  exec tmux new-session -A -s main
+fi
