@@ -23,6 +23,8 @@ typeset -a ZSH_PLUGINS=(
 # Tmux plugin definitions: name|path|git_url
 typeset -a TMUX_PLUGINS=(
     "catppuccin|catppuccin|https://github.com/catppuccin/tmux.git"
+    "tmux-battery|tmux-battery|https://github.com/tmux-plugins/tmux-battery.git"
+    "tmux-cpu|tmux-cpu|https://github.com/tmux-plugins/tmux-cpu.git"
 )
 
 # Tool definitions: name|check_command
