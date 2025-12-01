@@ -224,20 +224,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Set cursor shapes for different modes
-vim.opt.guicursor = {
-  'n-v-c:block',                                -- Normal, visual, command: block
-  'i-ci-ve:ver25',                              -- Insert, command insert, visual exclude: vertical bar
-  'r-cr:hor20',                                 -- Replace, command replace: horizontal bar
-  'o:hor50',                                    -- Operator pending: horizontal bar
-  'a:blinkwait700-blinkoff400-blinkon250',      -- All modes: blinking
-  'sm:block-blinkwait175-blinkoff150-blinkon175', -- Showmatch: block with fast blink
-}
-
+-- -- Set cursor shapes for different modes
+-- vim.opt.guicursor = {
+--   'n-v-c:block',                                -- Normal, visual, command: block
+--   'i-ci-ve:ver25',                              -- Insert, command insert, visual exclude: vertical bar
+--   'r-cr:hor20',                                 -- Replace, command replace: horizontal bar
+--   'o:hor50',                                    -- Operator pending: horizontal bar
+--   'a:blinkwait700-blinkoff400-blinkon250',      -- All modes: blinking
+--   'sm:block-blinkwait175-blinkoff150-blinkon175', -- Showmatch: block with fast blink
+-- }
+--
 -- Reset cursor to blinking block on exit
 vim.api.nvim_create_autocmd('VimLeave', {
   callback = function()
-    vim.opt.guicursor = 'a:block-blinkon1'
+    -- vim.opt.guicursor = 'a:block-blinkon1'
+    vim.fn.chansend(vim.v.stderr, '\x1b[1 q')
   end,
 })
 
