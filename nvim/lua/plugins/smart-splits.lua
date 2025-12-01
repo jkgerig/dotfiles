@@ -22,11 +22,11 @@ return {
     vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up, { desc = 'Move to above split' })
     vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right, { desc = 'Move to right split' })
 
-    -- Resizing: Alt+hjkl
-    vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left, { desc = 'Resize split left' })
-    vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down, { desc = 'Resize split down' })
-    vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up, { desc = 'Resize split up' })
-    vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right, { desc = 'Resize split right' })
+    -- Resizing: Ctrl+Shift+hjkl
+    vim.keymap.set('n', '<C-S-h>', require('smart-splits').resize_left, { desc = 'Resize split left' })
+    vim.keymap.set('n', '<C-S-j>', require('smart-splits').resize_down, { desc = 'Resize split down' })
+    vim.keymap.set('n', '<C-S-k>', require('smart-splits').resize_up, { desc = 'Resize split up' })
+    vim.keymap.set('n', '<C-S-l>', require('smart-splits').resize_right, { desc = 'Resize split right' })
 
     -- Swap buffers between splits: Leader+hjkl (optional)
     vim.keymap.set('n', '<leader>bh', require('smart-splits').swap_buf_left, { desc = 'Swap buffer left' })
