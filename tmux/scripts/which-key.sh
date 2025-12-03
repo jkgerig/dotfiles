@@ -126,6 +126,24 @@ build_menu() {
             continue
         fi
 
+        # Dynamic menu items: @dynamic | tmux-command
+        if [[ "$line" =~ ^@dynamic[[:space:]]*\|[[:space:]]*(.+)$ ]]; then
+            local dynamic_cmd="${BASH_REMATCH[1]}"
+            local count=0
+            local max_items=10
+            while IFS= read -r dynamic_line && [[ $count -lt $max_items ]]; do
+                if [[ "$dynamic_line" =~ ^([^|]+)\|([^|]+)\|(.+)$ ]]; then
+                    local dkey dname dcmd
+                    dkey=$(trim "${BASH_REMATCH[1]}")
+                    dname=$(trim "${BASH_REMATCH[2]}")
+                    dcmd=$(trim "${BASH_REMATCH[3]}")
+                    menu_args+=("$dname" "$dkey" "$dcmd")
+                    ((count++))
+                fi
+            done < <(eval "tmux $dynamic_cmd" 2>/dev/null)
+            continue
+        fi
+
         # Parse: key | description | command  OR  key | +Submenu
         if [[ "$line" =~ ^([^|]+)\|([^|]+)(\|(.*))?$ ]]; then
             local key desc cmd
