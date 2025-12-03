@@ -17,3 +17,6 @@ nvim/lazy-lock.json
 
 # Reference install of LazyVim
 nvim-lazy/
+
+# 1Password is mostly state, but config is also machine-specific
+op/
